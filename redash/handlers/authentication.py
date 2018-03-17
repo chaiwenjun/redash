@@ -15,7 +15,7 @@ from redash.version_check import get_latest_version
 from sqlalchemy.orm.exc import NoResultFound
 
 logger = logging.getLogger(__name__)
-
+print logger
 
 def get_google_auth_url(next_path):
     if settings.MULTI_ORG:
@@ -98,6 +98,11 @@ def pcr():
 @routes.route(org_scoped_rule('/login'), methods=['GET', 'POST'])
 @limiter.limit(settings.THROTTLE_LOGIN_PATTERN)
 def login(org_slug=None):
+    logger.info('enter login')
+    logger.info('org_slug %s', org_slug)
+    logger.info('current_org %s', current_org)
+    logger.info('settings.MULTI_ORG: %s',settings.MULTI_ORG)    
+ 
     # We intentionally use == as otherwise it won't actually use the proxy. So weird :O
     # noinspection PyComparisonWithNone
     if current_org == None and not settings.MULTI_ORG:
@@ -107,7 +112,15 @@ def login(org_slug=None):
    
     index_url = url_for("redash.index", org_slug=org_slug)
     next_path = request.args.get('next', index_url)
+    logger.info('index_url %s',index_url)
+    logger.info('next_path %s', next_path)
+    
+    logger.info('current_user.is_authenticated %s',current_user.is_authenticated)
+    logger.info(current_org.get_setting('auth_password_login_enabled'))
+
+    logger.info('current_user: ======>  %s',current_user)
     if current_user.is_authenticated:
+        logger.info('redirect =====> %s',next_path)
         return redirect(next_path)
     if not current_org.get_setting('auth_password_login_enabled'):
         if settings.REMOTE_USER_LOGIN_ENABLED:
@@ -118,6 +131,8 @@ def login(org_slug=None):
             return redirect(url_for("ldap_auth.login", next=next_path))
         else:
             return redirect(get_google_auth_url(next_path))
+
+    logger.info('=====> next_path: %s', next_path )
 
     if request.method == 'POST':
         try:
@@ -151,11 +166,13 @@ def logout(org_slug=None):
 
 
 def base_href():
+    logger.info('enter base_href')
     if settings.MULTI_ORG:
         base_href = url_for('redash.index', _external=True, org_slug=current_org.slug)
     else:
         base_href = url_for('redash.index', _external=True)
 
+    logger.info('return base_href:%s', base_href)
     return base_href
 
 

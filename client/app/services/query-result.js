@@ -54,8 +54,8 @@ function addPointToSeries(point, seriesCollection, seriesName) {
 
 
 function QueryResultService($resource, $timeout, $q) {
-  const QueryResultResource = $resource('api/query_results/:id', { id: '@id' }, { post: { method: 'POST' } });
-  const Job = $resource('api/jobs/:id', { id: '@id' });
+  const QueryResultResource = $resource('redash/api/query_results/:id', { id: '@id' }, { post: { method: 'POST' } });
+  const Job = $resource('redash/api/jobs/:id', { id: '@id' });
   const statuses = {
     1: 'waiting',
     2: 'processing',

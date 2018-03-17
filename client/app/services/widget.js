@@ -6,7 +6,7 @@ function Widget($resource, $http, Query, Visualization, dashboardGridOptions) {
     return omit(data, 'query');
   }
 
-  const WidgetResource = $resource('api/widgets/:id', { id: '@id' }, {
+  const WidgetResource = $resource('redash/api/widgets/:id', { id: '@id' }, {
     get: { method: 'GET' },
     save: {
       method: 'POST',

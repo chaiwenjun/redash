@@ -10,8 +10,8 @@ const LessPluginAutoPrefix = require('less-plugin-autoprefix');
 const path = require('path');
 const redashBackend = process.env.REDASH_BACKEND || 'http://127.0.0.1:5000';
 //const redashBackend = process.env.REDASH_BACKEND || 'http://l92.168.5.241:8080';
-
- 
+console.log(redashBackend)
+console.log(path); 
 //const redashBackend = process.env.REDASH_BACKEND || 'http://192.168.5.241:8080';
 //const redashBackend = 'http://192.168.5.241:5000';
 

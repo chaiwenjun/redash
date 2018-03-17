@@ -5,7 +5,7 @@ function AdminStatusCtrl($scope, $http, $timeout, currentUser, Events) {
   Events.record('view', 'page', 'admin/status');
 
   const refresh = () => {
-    $http.get('/status.json').success((data) => {
+    $http.get('/redash/status.json').success((data) => {
       $scope.workers = data.workers;
       delete data.workers;
       $scope.manager = data.manager;

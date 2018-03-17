@@ -18,7 +18,7 @@ function DestinationCtrl(
 
   $scope.$watch('destination.id', (id) => {
     if (id !== $scope.destinationId && id !== undefined) {
-      $location.path(`/destinations/${id}`).replace();
+      $location.path(`/redash/destinations/${id}`).replace();
     }
   });
 
@@ -37,7 +37,7 @@ function DestinationCtrl(
 
     $scope.destination.$delete(() => {
       toastr.success('Destination deleted successfully.');
-      $location.path('/destinations/');
+      $location.path('/redash/destinations/');
     }, (httpResponse) => {
       logger('Failed to delete destination: ', httpResponse.status, httpResponse.statusText, httpResponse.data);
       toastr.error('Failed to delete destination.');
@@ -49,7 +49,7 @@ export default function init(ngModule) {
   ngModule.controller('DestinationCtrl', DestinationCtrl);
 
   return {
-    '/destinations/new': {
+    '/redash/destinations/new': {
       template,
       controller: 'DestinationCtrl',
       title: 'Destinations',
@@ -62,11 +62,11 @@ export default function init(ngModule) {
         types: ($http) => {
           'ngInject';
 
-          return $http.get('api/destinations/types').then(response => response.data);
+          return $http.get('redash/api/destinations/types').then(response => response.data);
         },
       },
     },
-    '/destinations/:destinationId': {
+    '/redash/destinations/:destinationId': {
       template,
       controller: 'DestinationCtrl',
       title: 'Destinations',
@@ -79,7 +79,7 @@ export default function init(ngModule) {
         types: ($http) => {
           'ngInject';
 
-          return $http.get('api/destinations/types').then(response => response.data);
+          return $http.get('redash/api/destinations/types').then(response => response.data);
         },
       },
     },

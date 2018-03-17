@@ -15,23 +15,23 @@
 
       <ul class="nav navbar-nav nav__main">
         <li class="dropdown btn-group" ng-show="$ctrl.showDashboardsMenu" uib-dropdown>
-          <a id="split-button" class="btn" href="dashboards">Dashboards</a>
+          <a id="split-button" class="btn" href="redash/dashboards">Dashboards</a>
           <a type="button" class="btn hidden-xs" uib-dropdown-toggle>
             <span class="caret caret--nav"></span>
           </a>
           <ul class="dropdown-menu" uib-dropdown-menu>
-            <li><a href="dashboards">All Dashboards</a></li>
+            <li><a href="redash/dashboards">All Dashboards</a></li>
             <li class="divider" ng-if="$ctrl.dashboards | notEmpty"></li>
             <li ng-repeat="dashboard in $ctrl.dashboards">
-              <a href="dashboard/{{dashboard.slug}}" ng-bind="dashboard.name"></a>
+              <a href="redash/dashboard/{{dashboard.slug}}" ng-bind="dashboard.name"></a>
             </li>
           </ul>
         </li>
         <li class="dropdown" ng-show="$ctrl.showQueriesMenu" uib-dropdown>
-          <a href="queries">Queries</a>
+          <a href="redash/queries">Queries</a>
         </li>
         <li ng-if="$ctrl.showAlertsLink">
-          <a href="alerts">Alerts</a>
+          <a href="redash/alerts">Alerts</a>
         </li>
       </ul>
 
@@ -41,16 +41,16 @@
           Create <span class="caret caret--nav"></span>
         </button>
         <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="create-button">
-          <li role="menuitem" ng-show="$ctrl.showNewQueryMenu"><a href="queries/new">Query</a></li>
+          <li role="menuitem" ng-show="$ctrl.showNewQueryMenu"><a href="redash/queries/new">Query</a></li>
           <li role="menuitem"><a ng-show="$ctrl.currentUser.hasPermission('create_dashboard')" ng-click="$ctrl.newDashboard()">Dashboard</a></li>
-          <li role="menuitem"><a href="alerts/new">Alert</a></li>
+          <li role="menuitem"><a href="redash/alerts/new">Alert</a></li>
         </ul>
       </div>
 
       <!-- Profile -->
       <ul class="nav navbar-nav navbar-right">
         <li ng-show="$ctrl.currentUser.isAdmin">
-          <a href="data_sources" title="Settings"><i class="fa fa-sliders" aria-hidden="true"></i></a>
+          <a href="redash/data_sources" title="Settings"><i class="fa fa-sliders" aria-hidden="true"></i></a>
         </li>
         <!--<li ng-show="$ctrl.showSettingsMenu">-->
           <!--<a href="users" title="Settings"><i class="fa fa-cog"></i></a>-->
@@ -62,29 +62,29 @@
             class="caret caret--nav"></span></a>
           <ul class="dropdown-menu dropdown-menu--profile">
             <li>
-              <a ng-href="users/me">Edit Profile</a>
+              <a ng-href="redash/users/me">Edit Profile</a>
             </li>
             <li class="divider" ng-if="$ctrl.currentUser.hasPermission('super_admin')">
 
             <li ng-show="$ctrl.currentUser.isAdmin">
-              <a href="data_sources" title="Data Sources">Data Sources</a>
+              <a href="redash/data_sources" title="Data Sources">Data Sources</a>
             </li>
             <li ng-show="$ctrl.showSettingsMenu">
-              <a href="groups" title="Settings">Groups</a>
+              <a href="redash/groups" title="Settings">Groups</a>
             </li>
             <li ng-show="$ctrl.showSettingsMenu">
-              <a href="users" title="Settings">Users</a>
+              <a href="redash/users" title="Settings">Users</a>
             </li>
             <li>
-              <a ng-href="query_snippets">Query Snippets</a>
+              <a ng-href="redash/query_snippets">Query Snippets</a>
             </li>
             <li ng-show="$ctrl.showSettingsMenu">
-              <a href="destinations" title="Settings">Alert Destinations</a>
+              <a href="redash/destinations" title="Settings">Alert Destinations</a>
             </li>
 
             <li  ng-if="$ctrl.currentUser.hasPermission('super_admin')" class="divider"></li>
 
-            <li ng-if="$ctrl.currentUser.hasPermission('super_admin')"><a href="admin/status">System Status</a></li>
+            <li ng-if="$ctrl.currentUser.hasPermission('super_admin')"><a href="redash/admin/status">System Status</a></li>
 
             <li class="divider"></li>
 

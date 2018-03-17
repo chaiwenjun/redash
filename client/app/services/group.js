@@ -3,13 +3,13 @@ function Group($resource) {
     get: { method: 'GET', cache: false, isArray: false },
     query: { method: 'GET', cache: false, isArray: true },
     members: {
-      method: 'GET', cache: false, isArray: true, url: 'api/groups/:id/members',
+      method: 'GET', cache: false, isArray: true, url: 'redash/api/groups/:id/members',
     },
     dataSources: {
-      method: 'GET', cache: false, isArray: true, url: 'api/groups/:id/data_sources',
+      method: 'GET', cache: false, isArray: true, url: 'redash/api/groups/:id/data_sources',
     },
   };
-  const resource = $resource('api/groups/:id', { id: '@id' }, actions);
+  const resource = $resource('redash/api/groups/:id', { id: '@id' }, actions);
   return resource;
 }
 

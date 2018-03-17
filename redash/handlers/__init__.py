@@ -12,17 +12,17 @@ from redash.monitor import get_status
 
 #from flask_cas import logout
 #from flask_cas import login
-@routes.route('/ping', methods=['GET'])
+@routes.route('/redash/ping', methods=['GET'])
 def ping():
     return 'PONG.'
 
-@routes.route('/test.json')
+@routes.route('/redash/test.json')
 def status_api1():
     print("status 11111")
     status = get_status()
     return jsonify(status)
 
-@routes.route('/status.json')
+@routes.route('/redash/status.json')
 #@login_required
 #@require_super_admin
 def status_api():

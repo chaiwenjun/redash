@@ -222,7 +222,7 @@ function DashboardCtrl(
     $uibModal.open({
       component: 'permissionsEditor',
       resolve: {
-        aclUrl: { url: `api/dashboards/${this.dashboard.id}/acl` },
+        aclUrl: { url: `redash/api/dashboards/${this.dashboard.id}/acl` },
       },
     });
   };
@@ -377,7 +377,7 @@ const ShareDashboardComponent = {
     this.dashboard = this.resolve.dashboard;
 
     this.toggleSharing = () => {
-      const url = `api/dashboards/${this.dashboard.id}/share`;
+      const url = `redash/api/dashboards/${this.dashboard.id}/share`;
 
       if (!this.dashboard.publicAccessEnabled) {
         // disable

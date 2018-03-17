@@ -20,7 +20,7 @@ function GroupDataSourcesCtrl($scope, $routeParams, $http, Events, Group, DataSo
     // Clear selection, to clear up the input control.
     $scope.newDataSource.selected = undefined;
 
-    $http.post(`api/groups/${$routeParams.groupId}/data_sources`, { data_source_id: dataSource.id }).success(() => {
+    $http.post(`redash/api/groups/${$routeParams.groupId}/data_sources`, { data_source_id: dataSource.id }).success(() => {
       dataSource.view_only = false;
       $scope.dataSources.unshift(dataSource);
 
@@ -31,7 +31,7 @@ function GroupDataSourcesCtrl($scope, $routeParams, $http, Events, Group, DataSo
   };
 
   $scope.changePermission = (dataSource, viewOnly) => {
-    $http.post(`api/groups/${$routeParams.groupId}/data_sources/${dataSource.id}`, { view_only: viewOnly }).success(() => {
+    $http.post(`redash/api/groups/${$routeParams.groupId}/data_sources/${dataSource.id}`, { view_only: viewOnly }).success(() => {
       dataSource.view_only = viewOnly;
     });
   };

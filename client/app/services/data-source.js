@@ -9,7 +9,7 @@ function DataSource($q, $resource, $http) {
       params.refresh = true;
     }
 
-    return $http.get(`api/data_sources/${dataSourceId}/schema`, { params });
+    return $http.get(`redash/api/data_sources/${dataSourceId}/schema`, { params });
   }
 
   const actions = {
@@ -19,11 +19,11 @@ function DataSource($q, $resource, $http) {
       method: 'POST',
       cache: false,
       isArray: false,
-      url: 'api/data_sources/:id/test',
+      url: 'redash/api/data_sources/:id/test',
     },
   };
 
-  const DataSourceResource = $resource('api/data_sources/:id', { id: '@id' }, actions);
+  const DataSourceResource = $resource('redash/api/data_sources/:id', { id: '@id' }, actions);
 
   DataSourceResource.prototype.getSchema = function getSchema(refresh = false) {
     if (this._schema === undefined || refresh) {

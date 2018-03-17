@@ -14,7 +14,7 @@ login_manager = LoginManager()
 logger = logging.getLogger('authentication')
 
 
-def get_login_url(external=False, next="/"):
+def get_login_url(external=False, next="/redash"):
     if settings.MULTI_ORG and current_org == None:
         login_url = '/'
     elif settings.MULTI_ORG:
@@ -22,7 +22,7 @@ def get_login_url(external=False, next="/"):
     else:
         login_url = url_for('redash.login', next=next, _external=external)
 
-    print login_url
+    logger.info('login_url:', login_url)
     return login_url
 
 

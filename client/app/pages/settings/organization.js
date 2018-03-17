@@ -5,12 +5,12 @@ function OrganizationSettingsCtrl($http, toastr, Events) {
   Events.record('view', 'page', 'org_settings');
 
   this.settings = {};
-  $http.get('api/settings/organization').then((response) => {
+  $http.get('redash/api/settings/organization').then((response) => {
     this.settings = response.data.settings;
   });
 
   this.update = (key) => {
-    $http.post('api/settings/organization', { [key]: this.settings[key] }).then((response) => {
+    $http.post('redash/api/settings/organization', { [key]: this.settings[key] }).then((response) => {
       this.settings = response.data.settings;
       toastr.success('Settings changes saved.');
     }).catch(() => {

@@ -17,7 +17,7 @@ export default function init(ngModule) {
   ngModule.controller('DestinationsCtrl', DestinationsCtrl);
 
   return {
-    '/destinations': {
+    '/redash/destinations': {
       template,
       controller: 'DestinationsCtrl',
       title: 'Destinations',

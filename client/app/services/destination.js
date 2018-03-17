@@ -4,7 +4,7 @@ function Destination($resource) {
     query: { method: 'GET', cache: false, isArray: true },
   };
 
-  const DestinationResource = $resource('api/destinations/:id', { id: '@id' }, actions);
+  const DestinationResource = $resource('redash/api/destinations/:id', { id: '@id' }, actions);
 
   return DestinationResource;
 }

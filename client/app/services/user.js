@@ -26,7 +26,7 @@ function User($resource, $http) {
     delete: { method: 'DELETE', transformResponse },
   };
 
-  const UserResource = $resource('api/users/:id', { id: '@id' }, actions);
+  const UserResource = $resource('redash/api/users/:id', { id: '@id' }, actions);
 
   return UserResource;
 }

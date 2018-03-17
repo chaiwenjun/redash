@@ -35,7 +35,7 @@ function controller($rootScope, $location, $uibModal, Auth, currentUser, clientC
   };
 
   this.searchQueries = () => {
-    $location.path('/queries/search').search({ q: this.term });
+    $location.path('/redash/queries/search').search({ q: this.term });
   };
 
   this.logout = () => {

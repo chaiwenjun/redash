@@ -50,7 +50,7 @@ function VisualizationProvider() {
   };
 
   this.$get = ($resource) => {
-    const Visualization = $resource('api/visualizations/:id', { id: '@id' });
+    const Visualization = $resource('redash/api/visualizations/:id', { id: '@id' });
     Visualization.visualizations = this.visualizations;
     Visualization.visualizationTypes = this.visualizationTypes;
     Visualization.renderVisualizationsTemplate = this.getSwitchTemplate('renderTemplate');

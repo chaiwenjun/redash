@@ -169,18 +169,18 @@ class Parameters {
 
 function QueryResource($resource, $http, $q, $location, currentUser, QueryResult) {
   const Query = $resource(
-    'api/queries/:id',
+    'redash/api/queries/:id',
     { id: '@id' },
     {
       search: {
         method: 'get',
         isArray: true,
-        url: 'api/queries/search',
+        url: 'redash/api/queries/search',
       },
       recent: {
         method: 'get',
         isArray: true,
-        url: 'api/queries/recent',
+        url: 'redash/api/queries/recent',
       },
       query: {
         isArray: false,
@@ -188,18 +188,18 @@ function QueryResource($resource, $http, $q, $location, currentUser, QueryResult
       myQueries: {
         method: 'get',
         isArray: false,
-        url: 'api/queries/my',
+        url: 'redash/api/queries/my',
       },
       fork: {
         method: 'post',
         isArray: false,
-        url: 'api/queries/:id/fork',
+        url: 'redash/api/queries/:id/fork',
         params: { id: '@id' },
       },
       resultById: {
         method: 'get',
         isArray: false,
-        url: 'api/queries/:id/results.json',
+        url: 'redash/api/queries/:id/results.json',
       },
     },
   );
@@ -223,7 +223,7 @@ function QueryResource($resource, $http, $q, $location, currentUser, QueryResult
         return $q.reject(String(err));
       }
     } else if (syntax === 'sql') {
-      return $http.post('api/queries/format', { query }).then(response => response.data.query);
+      return $http.post('redash/api/queries/format', { query }).then(response => response.data.query);
     } else {
       return $q.reject('Query formatting is not supported for your data source syntax.');
     }
@@ -312,7 +312,7 @@ function QueryResource($resource, $http, $q, $location, currentUser, QueryResult
   };
 
   Query.prototype.getUrl = function getUrl(source, hash) {
-    let url = `queries/${this.id}`;
+    let url = `redash/queries/${this.id}`;
 
     if (source) {
       url += '/source';

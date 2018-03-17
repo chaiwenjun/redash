@@ -29,7 +29,7 @@ export default function init(ngModule) {
     'ngInject';
 
     const token = $route.current.params.token;
-    return $http.get(`api/dashboards/public/${token}`).then(response => response.data);
+    return $http.get(`redash/api/dashboards/public/${token}`).then(response => response.data);
   }
 
   function session($http, $route, Auth) {

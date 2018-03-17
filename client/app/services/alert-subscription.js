@@ -1,5 +1,5 @@
 function AlertSubscription($resource) {
-  const resource = $resource('api/alerts/:alertId/subscriptions/:subscriberId', { alertId: '@alert_id', subscriberId: '@id' });
+  const resource = $resource('redash/api/alerts/:alertId/subscriptions/:subscriberId', { alertId: '@alert_id', subscriberId: '@id' });
   return resource;
 }
 

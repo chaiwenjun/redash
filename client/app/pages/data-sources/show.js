@@ -97,7 +97,7 @@ export default function init(ngModule) {
         types: ($http) => {
           'ngInject';
 
-          return $http.get('api/data_sources/types').then(response => response.data);
+          return $http.get('redash/api/data_sources/types').then(response => response.data);
         },
       },
     },
@@ -114,7 +114,7 @@ export default function init(ngModule) {
         types: ($http) => {
           'ngInject';
 
-          return $http.get('api/data_sources/types').then(response => response.data);
+          return $http.get('redash/api/data_sources/types').then(response => response.data);
         },
       },
     },

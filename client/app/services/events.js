@@ -7,7 +7,7 @@ function Events($http) {
     const events = this.events;
     this.events = [];
 
-    $http.post('api/events', events);
+    $http.post('redash/api/events', events);
   }, 1000);
 
   this.record = function record(action, objectType, objectId, additionalProperties) {

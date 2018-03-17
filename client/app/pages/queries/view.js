@@ -420,7 +420,7 @@ function QueryViewCtrl(
     $uibModal.open({
       component: 'permissionsEditor',
       resolve: {
-        aclUrl: { url: `api/queries/${$routeParams.queryId}/acl` },
+        aclUrl: { url: `redash/api/queries/${$routeParams.queryId}/acl` },
       },
     });
   };

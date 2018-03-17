@@ -116,10 +116,14 @@ def paginate(query_set, page, page_size, serializer):
 
 
 def org_scoped_rule(rule):
+    print 'settings.MULTI_ORG:', settings.MULTI_ORG
+    print 'enter org_scoped_rule:', rule
+
     if settings.MULTI_ORG:
         return "/<org_slug:org_slug>{}".format(rule)
-
-    return rule
+    
+    print 'return url:', "/redash"+rule
+    return "/redash"+rule
 
 
 def json_response(response):

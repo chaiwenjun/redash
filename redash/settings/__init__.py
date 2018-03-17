@@ -104,7 +104,7 @@ COOKIE_SECRET = os.environ.get("REDASH_COOKIE_SECRET", "c292a0a3aa32397cdb050e23
 SESSION_COOKIE_SECURE = parse_boolean(os.environ.get("REDASH_SESSION_COOKIE_SECURE") or str(ENFORCE_HTTPS))
 
 LOG_LEVEL = os.environ.get("REDASH_LOG_LEVEL", "INFO")
-LOG_STDOUT = parse_boolean(os.environ.get('REDASH_LOG_STDOUT', 'false'))
+LOG_STDOUT = parse_boolean(os.environ.get('REDASH_LOG_STDOUT', 'true'))
 LOG_FORMAT = os.environ.get('REDASH_LOG_FORMAT', '[%(asctime)s][PID:%(process)d][%(levelname)s][%(name)s] %(message)s')
 CELERYD_LOG_FORMAT = os.environ.get('REDASH_CELERYD_LOG_FORMAT', '[%(asctime)s][PID:%(process)d][%(levelname)s][%(processName)s] %(message)s')
 CELERYD_TASK_LOG_FORMAT = os.environ.get('REDASH_CELERYD_TASK_LOG_FORMAT', '[%(asctime)s][PID:%(process)d][%(levelname)s][%(processName)s] task_name=%(task_name)s task_id=%(task_id)s %(message)s')

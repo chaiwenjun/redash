@@ -87,6 +87,6 @@ export default function init(ngModule) {
   };
 
   return {
-    '/dashboards': route,
+    '/redash/dashboards': route,
   };
 }

@@ -27,7 +27,7 @@ function GroupCtrl($scope, $routeParams, $http, currentUser, Events, Group, User
     // Clear selection, to clear up the input control.
     $scope.newMember.selected = undefined;
 
-    $http.post(`api/groups/${$routeParams.groupId}/members`, { user_id: user.id }).success(() => {
+    $http.post(`redash/api/groups/${$routeParams.groupId}/members`, { user_id: user.id }).success(() => {
       $scope.members.unshift(user);
       user.alreadyMember = true;
     });

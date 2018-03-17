@@ -12,7 +12,7 @@ function OutdatedQueriesCtrl($scope, Events, $http, $timeout) {
   const refresh = () => {
     if ($scope.autoUpdate) {
       $scope.refresh_time = moment().add(1, 'minutes');
-      $http.get('/api/admin/queries/outdated').success((data) => {
+      $http.get('/redash/api/admin/queries/outdated').success((data) => {
         this.queries.updateRows(data.queries);
         $scope.updatedAt = data.updated_at * 1000.0;
       });

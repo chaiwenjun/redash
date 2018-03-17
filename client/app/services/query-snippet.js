@@ -1,5 +1,5 @@
 function QuerySnippet($resource) {
-  const resource = $resource('api/query_snippets/:id', { id: '@id' });
+  const resource = $resource('redash/api/query_snippets/:id', { id: '@id' });
   resource.prototype.getSnippet = function getSnippet() {
     let name = this.trigger;
     if (this.description !== '') {
