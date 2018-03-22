@@ -2,26 +2,41 @@ import sqlite3
 from unittest import TestCase
 
 from redash.query_runner.query_results import (PermissionError, _load_query, create_table,
-                                               extract_query_ids)
+                                                  extract_child_queries)
 from tests import BaseTestCase
 
 
-class TestExtractQueryIds(TestCase):
+class TestExtractChildQueries(TestCase):
     def test_works_with_simple_query(self):
         query = "SELECT 1"
-        self.assertEquals([], extract_query_ids(query))
+        actual = [cq['query_id'] for cq in extract_child_queries(query)]
+        self.assertEquals([], actual)
 
     def test_finds_queries_to_load(self):
         query = "SELECT * FROM query_123"
-        self.assertEquals([123], extract_query_ids(query))
+        actual = [cq['query_id'] for cq in extract_child_queries(query)]
+        self.assertEquals([123], actual)
 
     def test_finds_queries_in_joins(self):
         query = "SELECT * FROM query_123 JOIN query_4566"
-        self.assertEquals([123, 4566], extract_query_ids(query))
+        actual = [cq['query_id'] for cq in extract_child_queries(query)]
+        self.assertEquals([123, 4566], actual)
 
     def test_finds_queries_with_whitespace_characters(self):
         query = "SELECT * FROM    query_123 a JOIN\tquery_4566 b ON a.id=b.parent_id JOIN\r\nquery_78 c ON b.id=c.parent_id"
-        self.assertEquals([123, 4566, 78], extract_query_ids(query))
+        actual = [cq['query_id'] for cq in extract_child_queries(query)]
+        self.assertEquals([123, 4566, 78], actual)
+
+    def test_finds_queries_with_params(self):
+        query = "SELECT * FROM query_123('{\"foo\":\"bar\"}')"
+        expected = {
+            'query_id': 123,
+            'params': {u'foo': u'bar'},
+            'table': 'tmp_76995f025cd6e3d04ef3401ab31028c0',
+            'token': u"query_123('{\"foo\":\"bar\"}')",
+        }
+        actual = extract_child_queries(query)[0]
+        self.assertEquals(expected, actual)
 
 
 class TestCreateTable(TestCase):
