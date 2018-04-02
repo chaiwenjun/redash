@@ -8,6 +8,7 @@ const WebpackBuildNotifierPlugin = require('webpack-build-notifier');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const LessPluginAutoPrefix = require('less-plugin-autoprefix');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const path = require('path');
 
 const redashBackend = process.env.REDASH_BACKEND || 'http://localhost:5000';
@@ -32,7 +33,12 @@ const config = {
   },
   resolve: {
     alias: {
-      '@': appPath
+      '@': appPath,
+      // Currently `lodash` is used only by `gridstack.js`, but it can work
+      // with `underscore` as well, so set an alias to avoid bundling both `lodash` and
+      // `underscore`. When adding new libraries, check if they can work
+      // with `underscore`, otherwise remove this line
+      'lodash': 'underscore',
     }
   },
   plugins: [
@@ -42,6 +48,8 @@ const config = {
     }),
     // Enforce angular to use jQuery instead of jqLite
     new webpack.ProvidePlugin({'window.jQuery': 'jquery'}),
+    // bundle only default `moment` locale (`en`)
+    new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /en/),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
       minChunks: function (module, count) {
@@ -137,6 +145,16 @@ const config = {
         }]
       },
       {
+        test: /\.geo\.json$/,
+        use: [{
+          loader: 'file-loader',
+          options: {
+            outputPath: 'data/',
+            name: '[hash:7].[name].[ext]',
+          }
+        }]
+      },
+      {
         test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
         use: [{
           loader: 'url-loader',
@@ -152,6 +170,9 @@ const config = {
   stats: {
     modules: false,
     chunkModules: false,
+  },
+  watchOptions: {
+    ignored: /\.sw.$/,
   },
   devServer: {
     inline: true,
@@ -199,6 +220,10 @@ if (process.env.NODE_ENV === 'production') {
     }
   }));
   config.devtool = 'source-map';
+}
+
+if (process.env.BUNDLE_ANALYZER) {
+  config.plugins.push(new BundleAnalyzerPlugin());
 }
 
 module.exports = config;

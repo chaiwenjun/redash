@@ -1,6 +1,6 @@
 import _ from 'underscore';
 import { getColumnCleanName } from '@/services/query-result';
-import createFormatter from '@/lib/value-format';
+import { createFormatter } from '@/lib/value-format';
 import template from './table.html';
 import editorTemplate from './table-editor.html';
 import './table-editor.less';
@@ -47,7 +47,7 @@ function getDefaultColumnsOptions(columns) {
     allowSearch: false,
     alignContent: getColumnContentAlignment(col.type),
     // `string` cell options
-    allowHTML: false,
+    allowHTML: true,
     highlightLinks: false,
   }));
 }
