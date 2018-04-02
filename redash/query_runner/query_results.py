@@ -1,9 +1,12 @@
+import hashlib
 import json
 import logging
 import numbers
 import re
 import sqlite3
 
+import pystache
+import sqlparse
 from dateutil import parser
 
 from redash import models
@@ -42,9 +45,23 @@ def _guess_type(value):
     return TYPE_STRING
 
 
-def extract_query_ids(query):
-    queries = re.findall(r'(?:join|from)\s+query_(\d+)', query, re.IGNORECASE)
-    return [int(q) for q in queries]
+def extract_child_queries(query):
+    pattern = re.compile(r"^query_(\d+)(?:\('(\{.+\})'\))?", re.IGNORECASE)
+    queries = []
+
+    for token in sqlparse.parse(query)[0].tokens:
+        m = pattern.match(token.value)
+        if not m:
+            continue
+
+        queries.append({
+            'query_id': int(m.group(1)),
+            'params': {} if m.group(2) is None else json.loads(m.group(2)),
+            'table': 'tmp_' + hashlib.md5(token.value).hexdigest(),
+            'token': token.tokens[0].value if isinstance(token.tokens[0], sqlparse.sql.Function) else token.value,
+        })
+
+    return queries
 
 
 def _load_query(user, query_id):
@@ -54,26 +71,34 @@ def _load_query(user, query_id):
         raise PermissionError("Query id {} not found.".format(query.id))
 
     if not has_access(query.data_source.groups, user, not_view_only):
-        raise PermissionError(u"You are not allowed to execute queries on {} data source (used for query id {}).".format(
-            query.data_source.name, query.id))
+        raise PermissionError(
+            u"You are not allowed to execute queries on {} data source (used for query id {}).".format(
+                query.data_source.name, query.id))
 
     return query
 
 
-def create_tables_from_query_ids(user, connection, query_ids):
-    for query_id in set(query_ids):
-        query = _load_query(user, query_id)
+def create_tables_from_child_queries(user, connection, query, child_queries):
+    for child_query in child_queries:
+        _query = _load_query(user, child_query['query_id'])
 
-        results, error = query.data_source.query_runner.run_query(
-            query.query_text, user)
+        params = child_query['params']
+        if not params:
+            params = _get_default_params(_query)
+
+        query_with_params = pystache.render(_query.query_text, params)
+        results, error = _query.data_source.query_runner.run_query(query_with_params, user)
 
         if error:
             raise Exception(
-                "Failed loading results for query id {}.".format(query.id))
+                "Failed loading results for query id {}.".format(_query.id))
 
         results = json.loads(results)
-        table_name = 'query_{query_id}'.format(query_id=query_id)
+        table_name = child_query['table']
         create_table(connection, table_name, results)
+        query = query.replace(child_query['token'], table_name)
+
+    return query
 
 
 def fix_column_name(name):
@@ -101,6 +126,16 @@ def create_table(connection, table_name, query_results):
         connection.execute(insert_template, values)
 
 
+def _get_default_params(query):
+    params = {}
+
+    if 'parameters' in query.options:
+        for p in query.options['parameters']:
+            params[p['name']] = p['value']
+
+    return params
+
+
 class Results(BaseQueryRunner):
     noop_query = 'SELECT 1'
 
@@ -118,13 +153,13 @@ class Results(BaseQueryRunner):
 
     @classmethod
     def name(cls):
-        return "Query Results (Beta)"
+        return "Query Results Ex(Beta)"
 
     def run_query(self, query, user):
         connection = sqlite3.connect(':memory:')
 
-        query_ids = extract_query_ids(query)
-        create_tables_from_query_ids(user, connection, query_ids)
+        child_queries = extract_child_queries(query)
+        query = create_tables_from_child_queries(user, connection, query, child_queries)
 
         cursor = connection.cursor()
 
