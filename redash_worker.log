@@ -1,0 +1,135 @@
+nohup: ignoring input
+[2018-07-30 17:50:32,272][PID:6678][DEBUG][root] Creating Redis connection (redis://localhost:6379/0)
+[2018-07-30 17:50:32,374][PID:6678][DEBUG][redash.query_runner] Registering Amazon Athena (athena) query runner.
+[2018-07-30 17:50:32,496][PID:6678][DEBUG][redash.query_runner] Registering BigQuery (bigquery) query runner.
+[2018-07-30 17:50:32,503][PID:6678][INFO][requests.packages.urllib3.connectionpool] Starting new HTTP connection (1): metadata.google.internal
+[2018-07-30 17:50:32,519][PID:6678][DEBUG][redash.query_runner] BigQueryGCE query runner enabled but not supported, not registering. Either disable or install missing dependencies.
+[2018-07-30 17:50:32,521][PID:6678][DEBUG][redash.query_runner] Registering GoogleSpreadsheet (google_spreadsheets) query runner.
+[2018-07-30 17:50:32,522][PID:6678][DEBUG][redash.query_runner] Registering Graphite (graphite) query runner.
+[2018-07-30 17:50:32,541][PID:6678][DEBUG][redash.query_runner] Registering MongoDB (mongodb) query runner.
+[2018-07-30 17:50:32,544][PID:6678][DEBUG][redash.query_runner] Registering MySQL (mysql) query runner.
+[2018-07-30 17:50:32,544][PID:6678][DEBUG][redash.query_runner] Registering MySQL (Amazon RDS) (rds_mysql) query runner.
+[2018-07-30 17:50:32,552][PID:6678][DEBUG][redash.query_runner] Registering PostgreSQL (pg) query runner.
+[2018-07-30 17:50:32,553][PID:6678][DEBUG][redash.query_runner] Registering Redshift (redshift) query runner.
+[2018-07-30 17:50:32,553][PID:6678][DEBUG][redash.query_runner] Registering CockroachDB (cockroach) query runner.
+[2018-07-30 17:50:32,553][PID:6678][DEBUG][redash.query_runner] Registering Url (url) query runner.
+[2018-07-30 17:50:32,555][PID:6678][DEBUG][redash.query_runner] Registering InfluxDB (influxdb) query runner.
+[2018-07-30 17:50:32,555][PID:6678][DEBUG][redash.query_runner] Registering Kibana (kibana) query runner.
+[2018-07-30 17:50:32,555][PID:6678][DEBUG][redash.query_runner] Registering Elasticsearch (elasticsearch) query runner.
+[2018-07-30 17:50:32,583][PID:6678][DEBUG][redash.query_runner] Registering Presto (presto) query runner.
+[2018-07-30 17:50:32,586][PID:6678][DEBUG][redash.query_runner] Hive query runner enabled but not supported, not registering. Either disable or install missing dependencies.
+[2018-07-30 17:50:32,605][PID:6678][DEBUG][redash.query_runner] Registering Impala (impala) query runner.
+[2018-07-30 17:50:32,629][PID:6678][DEBUG][redash.query_runner] Registering Vertica (vertica) query runner.
+[2018-07-30 17:50:32,630][PID:6678][DEBUG][redash.query_runner] Registering ClickHouse (clickhouse) query runner.
+[2018-07-30 17:50:32,647][PID:6678][DEBUG][redash.query_runner] Registering TreasureData (treasuredata) query runner.
+[2018-07-30 17:50:32,648][PID:6678][DEBUG][redash.query_runner] Registering Sqlite (sqlite) query runner.
+[2018-07-30 17:50:32,770][PID:6678][DEBUG][redash.query_runner] Registering DynamoDB (with DQL) (dynamodb_sql) query runner.
+[2018-07-30 17:50:32,772][PID:6678][DEBUG][redash.query_runner] Registering Microsoft SQL Server (mssql) query runner.
+[2018-07-30 17:50:32,773][PID:6678][DEBUG][redash.query_runner] Registering MemSQL (memsql) query runner.
+[2018-07-30 17:50:32,778][PID:6678][DEBUG][redash.query_runner] Mapd query runner enabled but not supported, not registering. Either disable or install missing dependencies.
+[2018-07-30 17:50:32,779][PID:6678][DEBUG][redash.query_runner] Registering JIRA (JQL) (jirajql) query runner.
+[2018-07-30 17:50:32,779][PID:6678][DEBUG][redash.query_runner] Registering Google Analytics (google_analytics) query runner.
+[2018-07-30 17:50:32,782][PID:6678][DEBUG][root] Checking for the appropriate 'python-requests' version...
+[2018-07-30 17:50:32,782][PID:6678][DEBUG][root] Detected version of 'python-requests' : 2.11.1. OK
+[2018-07-30 17:50:32,784][PID:6678][DEBUG][redash.query_runner] Registering Axibase Time Series Database (axibasetsd) query runner.
+[2018-07-30 17:50:32,787][PID:6678][DEBUG][redash.query_runner] Registering Salesforce (salesforce) query runner.
+[2018-07-30 17:50:32,806][PID:6678][DEBUG][passlib.utils.compat] loaded lazy attr 'SafeConfigParser': <class ConfigParser.SafeConfigParser at 0xd47e20>
+[2018-07-30 17:50:32,806][PID:6678][DEBUG][passlib.utils.compat] loaded lazy attr 'NativeStringIO': <built-in function StringIO>
+[2018-07-30 17:50:32,806][PID:6678][DEBUG][passlib.utils.compat] loaded lazy attr 'BytesIO': <built-in function StringIO>
+[2018-07-30 17:50:33,325][PID:6678][DEBUG][redash.query_runner] Registering Query Results (Beta) (results) query runner.
+[2018-07-30 17:50:33,340][PID:6678][DEBUG][redash.query_runner] Registering Qubole (qubole) query runner.
+[2018-07-30 17:50:33,340][PID:6678][DEBUG][redash.destinations] Registering Email (email) destinations.
+[2018-07-30 17:50:33,340][PID:6678][DEBUG][redash.destinations] Registering Slack (slack) destinations.
+[2018-07-30 17:50:33,340][PID:6678][DEBUG][redash.destinations] Registering Webhook (webhook) destinations.
+[2018-07-30 17:50:33,340][PID:6678][DEBUG][redash.destinations] Registering HipChat (hipchat) destinations.
+[2018-07-30 17:50:33,343][PID:6678][INFO][root] Latest version: 4.0.1 (newer: True)
+[2018-07-30 17:50:33,441][PID:6678][WARNING][MainProcess] /usr/lib/python2.7/site-packages/celery/apps/worker.py:161: CDeprecationWarning: 
+Starting from version 3.2 Celery will refuse to accept pickle by default.
+
+The pickle serializer is a security concern as it may give attackers
+the ability to execute any command.  It's important to secure
+your broker from unauthorized access when using pickle, so we think
+that enabling pickle should require a deliberate action and not be
+the default choice.
+
+If you depend on pickle then you should set a setting to disable this
+warning and to be sure that everything will continue working
+when you upgrade to Celery 3.2::
+
+    CELERY_ACCEPT_CONTENT = ['pickle', 'json', 'msgpack', 'yaml']
+
+You must only enable the serializers that you will actually use.
+
+
+  warnings.warn(CDeprecationWarning(W_PICKLE_DEPRECATED))
+[2018-07-30 17:50:34,799][PID:6678][WARNING][MainProcess] celery@ccpvbisras00 ready.
+[2018-07-30 17:50:35,183][PID:6704][WARNING][Worker-2] @@### excute_query : <redash.task.excute_query>
+[2018-07-30 17:50:35,192][PID:6705][WARNING][Worker-3] @@### excute_query : <redash.task.excute_query>
+[2018-07-30 17:50:44,083][PID:6704][WARNING][Worker-2] @@### excute_query : <redash.task.excute_query>
+[2018-07-30 17:51:24,761][PID:6704][WARNING][Worker-2] @@### excute_query : <redash.task.excute_query>
+[2018-07-30 17:51:48,716][PID:6704][WARNING][Worker-2] @@### excute_query : <redash.task.excute_query>
+[2018-07-30 17:52:03,656][PID:6704][WARNING][Worker-2] @@### excute_query : <redash.task.excute_query>
+[2018-07-30 17:52:03,663][PID:6705][WARNING][Worker-3] @@### excute_query : <redash.task.excute_query>
+[2018-07-30 17:53:33,736][PID:6705][WARNING][Worker-3] @@### excute_query : <redash.task.excute_query>
+[2018-07-30 17:53:33,743][PID:6704][WARNING][Worker-2] @@### excute_query : <redash.task.excute_query>
+[2018-07-30 17:55:03,776][PID:6704][WARNING][Worker-2] @@### excute_query : <redash.task.excute_query>
+[2018-07-30 17:55:03,787][PID:6705][WARNING][Worker-3] @@### excute_query : <redash.task.excute_query>
+[2018-07-30 17:56:33,851][PID:6705][WARNING][Worker-3] @@### excute_query : <redash.task.excute_query>
+[2018-07-30 17:56:33,859][PID:6704][WARNING][Worker-2] @@### excute_query : <redash.task.excute_query>
+[2018-07-30 17:57:24,560][PID:6704][WARNING][Worker-2] @@### excute_query : <redash.task.excute_query>
+[2018-07-30 17:57:33,898][PID:6704][WARNING][Worker-2] @@### excute_query : <redash.task.excute_query>
+[2018-07-30 17:57:36,174][PID:6705][WARNING][Worker-3] @@### excute_query : <redash.task.excute_query>
+[2018-07-30 17:57:41,747][PID:6704][WARNING][Worker-2] @@### excute_query : <redash.task.excute_query>
+[2018-07-30 17:57:45,944][PID:6705][WARNING][Worker-3] @@### excute_query : <redash.task.excute_query>
+[2018-07-30 17:58:03,924][PID:6705][WARNING][Worker-3] @@### excute_query : <redash.task.excute_query>
+[2018-07-30 17:59:03,944][PID:6704][WARNING][Worker-2] @@### excute_query : <redash.task.excute_query>
+[2018-07-30 17:59:33,961][PID:6704][WARNING][Worker-2] @@### excute_query : <redash.task.excute_query>
+[2018-07-30 18:00:33,984][PID:6705][WARNING][Worker-3] @@### excute_query : <redash.task.excute_query>
+[2018-07-30 18:01:03,984][PID:6705][WARNING][Worker-3] @@### excute_query : <redash.task.excute_query>
+[2018-07-30 18:02:04,000][PID:6704][WARNING][Worker-2] @@### excute_query : <redash.task.excute_query>
+[2018-07-30 18:02:34,044][PID:6704][WARNING][Worker-2] @@### excute_query : <redash.task.excute_query>
+[2018-07-30 18:03:04,059][PID:6704][WARNING][Worker-2] @@### excute_query : <redash.task.excute_query>
+[2018-07-30 18:04:04,107][PID:6705][WARNING][Worker-3] @@### excute_query : <redash.task.excute_query>
+[2018-07-30 18:04:04,113][PID:6704][WARNING][Worker-2] @@### excute_query : <redash.task.excute_query>
+[2018-07-30 18:05:04,152][PID:6705][WARNING][Worker-3] @@### excute_query : <redash.task.excute_query>
+[2018-07-30 18:05:34,169][PID:6705][WARNING][Worker-3] @@### excute_query : <redash.task.excute_query>
+[2018-07-30 18:06:34,216][PID:6704][WARNING][Worker-2] @@### excute_query : <redash.task.excute_query>
+[2018-07-30 18:06:34,224][PID:6705][WARNING][Worker-3] @@### excute_query : <redash.task.excute_query>
+[2018-07-30 18:07:34,261][PID:6704][WARNING][Worker-2] @@### excute_query : <redash.task.excute_query>
+[2018-07-30 18:08:04,282][PID:6704][WARNING][Worker-2] @@### excute_query : <redash.task.excute_query>
+[2018-07-30 18:08:34,314][PID:6704][WARNING][Worker-2] @@### excute_query : <redash.task.excute_query>
+[2018-07-30 18:09:04,334][PID:6704][WARNING][Worker-2] @@### excute_query : <redash.task.excute_query>
+[2018-07-30 18:09:34,359][PID:6704][WARNING][Worker-2] @@### excute_query : <redash.task.excute_query>
+[2018-07-30 18:10:04,381][PID:6704][WARNING][Worker-2] @@### excute_query : <redash.task.excute_query>
+[2018-07-30 18:11:04,392][PID:6705][WARNING][Worker-3] @@### excute_query : <redash.task.excute_query>
+[2018-07-30 18:11:34,418][PID:6705][WARNING][Worker-3] @@### excute_query : <redash.task.excute_query>
+[2018-07-30 18:12:04,440][PID:6705][WARNING][Worker-3] @@### excute_query : <redash.task.excute_query>
+[2018-07-30 18:13:04,465][PID:6704][WARNING][Worker-2] @@### excute_query : <redash.task.excute_query>
+[2018-07-30 18:13:34,483][PID:6705][WARNING][Worker-3] @@### excute_query : <redash.task.excute_query>
+[2018-07-30 18:13:34,513][PID:6704][WARNING][Worker-2] @@### excute_query : <redash.task.excute_query>
+[2018-07-30 18:13:35,481][PID:6705][WARNING][Worker-3] @@### excute_query : <redash.task.excute_query>
+[2018-07-30 18:13:35,482][PID:6704][WARNING][Worker-2] @@### excute_query : <redash.task.excute_query>
+[2018-07-30 18:13:35,951][PID:6705][WARNING][Worker-3] @@### excute_query : <redash.task.excute_query>
+[2018-07-30 18:13:36,206][PID:6704][WARNING][Worker-2] @@### excute_query : <redash.task.excute_query>
+[2018-07-30 18:13:36,462][PID:6705][WARNING][Worker-3] @@### excute_query : <redash.task.excute_query>
+[2018-07-30 18:14:34,544][PID:6704][WARNING][Worker-2] @@### excute_query : <redash.task.excute_query>
+[2018-07-30 18:15:04,543][PID:6704][WARNING][Worker-2] @@### excute_query : <redash.task.excute_query>
+[2018-07-30 18:16:04,555][PID:6705][WARNING][Worker-3] @@### excute_query : <redash.task.excute_query>
+[2018-07-30 18:16:34,577][PID:6705][WARNING][Worker-3] @@### excute_query : <redash.task.excute_query>
+[2018-07-30 18:17:34,622][PID:6704][WARNING][Worker-2] @@### excute_query : <redash.task.excute_query>
+[2018-07-30 18:17:34,628][PID:6705][WARNING][Worker-3] @@### excute_query : <redash.task.excute_query>
+[2018-07-30 18:19:04,663][PID:6705][WARNING][Worker-3] @@### excute_query : <redash.task.excute_query>
+[2018-07-30 18:19:04,673][PID:6704][WARNING][Worker-2] @@### excute_query : <redash.task.excute_query>
+[2018-07-30 18:20:34,700][PID:6704][WARNING][Worker-2] @@### excute_query : <redash.task.excute_query>
+[2018-07-30 18:20:34,707][PID:6705][WARNING][Worker-3] @@### excute_query : <redash.task.excute_query>
+[2018-07-30 18:22:04,730][PID:6705][WARNING][Worker-3] @@### excute_query : <redash.task.excute_query>
+[2018-07-30 18:22:04,737][PID:6704][WARNING][Worker-2] @@### excute_query : <redash.task.excute_query>
+[2018-07-30 18:23:34,791][PID:6704][WARNING][Worker-2] @@### excute_query : <redash.task.excute_query>
+[2018-07-30 18:23:34,798][PID:6705][WARNING][Worker-3] @@### excute_query : <redash.task.excute_query>
+[2018-07-30 18:24:34,837][PID:6704][WARNING][Worker-2] @@### excute_query : <redash.task.excute_query>
+[2018-07-30 18:25:04,860][PID:6704][WARNING][Worker-2] @@### excute_query : <redash.task.excute_query>
+[2018-07-30 18:26:04,883][PID:6705][WARNING][Worker-3] @@### excute_query : <redash.task.excute_query>
+[2018-07-30 18:26:34,913][PID:6705][WARNING][Worker-3] @@### excute_query : <redash.task.excute_query>
+[2018-07-30 18:27:05,085][PID:6705][WARNING][Worker-3] @@### excute_query : <redash.task.excute_query>
+[2018-07-30 18:28:04,954][PID:6704][WARNING][Worker-2] @@### excute_query : <redash.task.excute_query>
+[2018-07-30 18:28:34,961][PID:6704][WARNING][Worker-2] @@### excute_query : <redash.task.excute_query>

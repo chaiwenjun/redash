@@ -55,8 +55,8 @@ class Python(BaseQueryRunner):
                     'type': 'string',
                     'title': 'Modules to import prior to running the script'
                 },
-                'additionalModulesPaths': {
-                    'type': 'string'
+                'additionalModulesPaths' : {
+                    'type' : 'string'
                 }
             },
         }
@@ -154,6 +154,7 @@ class Python(BaseQueryRunner):
 
     @staticmethod
     def execute_query(data_source_name_or_id, query):
+        print("@@python.py- run query')
         """Run query from specific data source.
 
         Parameters:

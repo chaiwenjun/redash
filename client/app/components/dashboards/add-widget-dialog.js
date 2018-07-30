@@ -1,4 +1,3 @@
-import { debounce } from 'underscore';
 import template from './add-widget-dialog.html';
 
 const AddWidgetDialog = {
@@ -13,81 +12,61 @@ const AddWidgetDialog = {
 
     this.dashboard = this.resolve.dashboard;
     this.saveInProgress = false;
-
-    // Textbox
-    this.text = '';
-
-    // Visualization
-    this.selectedQuery = null;
-    this.searchTerm = '';
-    this.recentQueries = [];
-
-    // Don't show draft (unpublished) queries
-    Query.recent().$promise.then((items) => {
-      this.recentQueries = items.filter(item => !item.is_draft);
-    });
-
-    this.searchedQueries = [];
     this.selectedVis = null;
+    this.query = {};
+    this.selected_query = undefined;
+    this.text = '';
+    this.existing_text = '';
+    this.new_text = '';
+    this.isHidden = false;
+    this.type = 'visualization';
 
     this.trustAsHtml = html => $sce.trustAsHtml(html);
+    this.isVisualization = () => this.type === 'visualization';
+    this.isTextBox = () => this.type === 'textbox';
 
     this.setType = (type) => {
       this.type = type;
-      this.isVisualization = this.type === 'visualization';
-      this.isTextBox = this.type === 'textbox';
     };
-    this.setType('visualization');
 
-    this.selectQuery = (queryId) => {
-      // Clear previously selected query (if any)
-      this.selectedQuery = null;
-      this.selectedVis = null;
-
-      if (queryId) {
-        Query.get({ id: queryId }, (query) => {
-          if (query) {
-            this.selectedQuery = query;
-            if (query.visualizations.length) {
-              this.selectedVis = query.visualizations[0];
-            }
-          }
-        });
+    this.onQuerySelect = () => {
+      if (!this.query.selected) {
+        return;
       }
+
+      Query.get({ id: this.query.selected.id }, (query) => {
+        if (query) {
+          this.selected_query = query;
+          if (query.visualizations.length) {
+            this.selectedVis = query.visualizations[0];
+          }
+        }
+      });
     };
 
-    // `ng-model-options` does not work with `ng-change`, so do debounce here
-    this.searchQueries = debounce((term) => {
+    this.searchQueries = (term) => {
       if (!term || term.length === 0) {
-        this.searchedQueries = [];
+        this.queries = [];
         return;
       }
 
       Query.search({ q: term }, (results) => {
-        // If user will type too quick - it's possible that there will be
-        // several requests running simultaneously. So we need to check
-        // which results are matching current search term and ignore
-        // outdated results.
-        if (this.searchTerm === term) {
-          this.searchedQueries = results;
-        }
+        this.queries = results;
       });
-    }, 200);
+    };
 
     this.saveWidget = () => {
       this.saveInProgress = true;
 
-      const selectedVis = this.isVisualization ? this.selectedVis : null;
-
       const widget = new Widget({
-        visualization_id: selectedVis && selectedVis.id,
+        visualization_id: this.selectedVis && this.selectedVis.id,
         dashboard_id: this.dashboard.id,
         options: {
-          isHidden: false,
+          isHidden: this.isTextBox() && this.isHidden,
           position: {},
         },
-        visualization: selectedVis,
-        text: this.isTextBox ? this.text : '',
+        visualization: this.selectedVis,
+        text: this.text,
       });
 
       const position = this.dashboard.calculateNewWidgetPosition(widget);

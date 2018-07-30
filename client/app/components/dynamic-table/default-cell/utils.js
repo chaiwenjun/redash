@@ -1,14 +1,21 @@
-import { isFunction, extend } from 'underscore';
-import { formatSimpleTemplate } from '@/lib/value-format';
+import { isUndefined, isFunction } from 'underscore';
+
+const hasOwnProperty = Object.prototype.hasOwnProperty;
 
 function trim(str) {
   return str.replace(/^\s+|\s+$/g, '');
 }
 
 function processTags(str, data, defaultColumn) {
-  return formatSimpleTemplate(str, extend({
-    '@': data[defaultColumn],
-  }, data));
+  return str.replace(/{{\s*([^\s]+)\s*}}/g, (match, column) => {
+    if (column === '@') {
+      column = defaultColumn;
+    }
+    if (hasOwnProperty.call(data, column) && !isUndefined(data[column])) {
+      return data[column];
+    }
+    return match;
+  });
 }
 
 export function renderDefault(column, row) {
@@ -53,6 +60,8 @@ export function renderLink(column, row) {
   const result = [];
   if (url !== '') {
     result.push('<a href="' + url + '"');
+    //chai add url在iframe内跳转
+    result.push('onclick="openNewPage(event,this)"');
     if (title !== '') {
       result.push('title="' + title + '"');
     }
@@ -63,4 +72,9 @@ export function renderLink(column, row) {
   }
 
   return result.join(' ');
+}
+export  function openNewPage(ev,obj) {
+        ev.preventDefault();
+        var newPageUrl=encodeURIComponent(obj.getAttribute('href'));
+        window.parent.postMessage(newPageUrl, '*');
 }

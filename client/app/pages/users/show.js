@@ -1,6 +1,5 @@
 import { each } from 'underscore';
 import settingsMenu from '@/lib/settings-menu';
-import { absoluteUrl } from '@/services/utils';
 import template from './show.html';
 import './settings.less';
 
@@ -105,7 +104,7 @@ function UserCtrl(
     $scope.disablePasswordResetButton = true;
     $http.post(`api/users/${$scope.user.id}/reset_password`).success((data) => {
       $scope.disablePasswordResetButton = false;
-      $scope.passwordResetLink = absoluteUrl(data.reset_link);
+      $scope.passwordResetLink = data.reset_link;
     });
   };
 }
@@ -114,7 +113,6 @@ export default function init(ngModule) {
   settingsMenu.add({
     title: 'Account',
     path: 'users/me',
-    order: 7,
   });
 
   ngModule.controller('UserCtrl', UserCtrl);

@@ -105,11 +105,7 @@ class DynamoDBSQL(BaseSQLQueryRunner):
             # When running a count query it returns the value as a string, in which case
             # we transform it into a dictionary to be the same as regular queries.
             if isinstance(result, basestring):
-                # when count < scanned_count, dql returns a string with number of rows scanned
-                value = result.split(" (")[0]
-                if value:
-                    value = int(value)
-                result = [{"value": value}]
+                result = [{"value": result}]
 
             for item in result:
                 if not columns:

@@ -71,6 +71,14 @@ function QuerySourceCtrl(
       .catch(error => toastr.error(error));
   };
 
+  $scope.duplicateQuery = () => {
+    Events.record('fork', 'query', $scope.query.id);
+
+    Query.fork({ id: $scope.query.id }, (newQuery) => {
+      $location.url(newQuery.getSourceLink()).replace();
+    });
+  };
+
   $scope.deleteVisualization = ($e, vis) => {
     $e.preventDefault();
 

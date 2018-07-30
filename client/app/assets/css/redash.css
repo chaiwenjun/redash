@@ -669,8 +669,12 @@ div.table-name:hover {
   -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
   -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
   transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+   
 }
-
+.ui-select-spin
+{
+  width:30%
+}
 .t-header.widget {
   padding: 5px;
 }

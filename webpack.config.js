@@ -1,6 +1,5 @@
 /* eslint-disable */
 
-const fs = require('fs');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
@@ -8,37 +7,26 @@ const WebpackBuildNotifierPlugin = require('webpack-build-notifier');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const LessPluginAutoPrefix = require('less-plugin-autoprefix');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const path = require('path');
+const redashBackend = process.env.REDASH_BACKEND || 'http://127.0.0.1:5000';
+//const redashBackend = process.env.REDASH_BACKEND || 'http://l92.168.5.241:8080';
 
-const redashBackend = process.env.REDASH_BACKEND || 'http://localhost:5000';
-
-const basePath = fs.realpathSync(path.join(__dirname, 'client'));
-const appPath = fs.realpathSync(path.join(__dirname, 'client', 'app'));
+ 
+//const redashBackend = process.env.REDASH_BACKEND || 'http://192.168.5.241:8080';
+//const redashBackend = 'http://192.168.5.241:5000';
 
 const config = {
   entry: {
-    app: [
-      './client/app/index.js',
-      './client/app/assets/less/main.less',
-    ],
-    server: [
-      './client/app/assets/less/server.less',
-    ],
+    app: ['./client/app/index.js', './client/app/assets/less/main.less'],
   },
   output: {
-    path: path.join(basePath, './dist'),
+    path: path.join(__dirname, 'client', 'dist/'),
     filename: '[name].js',
     publicPath: '/static/'
   },
   resolve: {
     alias: {
-      '@': appPath,
-      // Currently `lodash` is used only by `gridstack.js`, but it can work
-      // with `underscore` as well, so set an alias to avoid bundling both `lodash` and
-      // `underscore`. When adding new libraries, check if they can work
-      // with `underscore`, otherwise remove this line
-      'lodash': 'underscore',
+      '@': path.join(__dirname, 'client/app')
     }
   },
   plugins: [
@@ -48,8 +36,6 @@ const config = {
     }),
     // Enforce angular to use jQuery instead of jqLite
     new webpack.ProvidePlugin({'window.jQuery': 'jquery'}),
-    // bundle only default `moment` locale (`en`)
-    new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /en/),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
       minChunks: function (module, count) {
@@ -72,15 +58,13 @@ const config = {
     new HtmlWebpackPlugin({
       template: './client/app/index.html',
       filename: 'index.html',
-      excludeChunks: ['server'],
     }),
     new HtmlWebpackPlugin({
       template: './client/app/multi_org.html',
       filename: 'multi_org.html',
-      excludeChunks: ['server'],
     }),
     new ExtractTextPlugin({
-      filename: '[name].[chunkhash].css',
+      filename: 'styles.[chunkhash].css',
     }),
     new ManifestPlugin({
       fileName: 'asset-manifest.json'
@@ -138,19 +122,9 @@ const config = {
         use: [{
           loader: 'file-loader',
           options: {
-            context: path.resolve(appPath, './assets/images/'),
+            context: path.resolve(__dirname, './client/app/assets/images/'),
             outputPath: 'images/',
             name: '[path][name].[ext]',
-          }
-        }]
-      },
-      {
-        test: /\.geo\.json$/,
-        use: [{
-          loader: 'file-loader',
-          options: {
-            outputPath: 'data/',
-            name: '[hash:7].[name].[ext]',
           }
         }]
       },
@@ -170,9 +144,6 @@ const config = {
   stats: {
     modules: false,
     chunkModules: false,
-  },
-  watchOptions: {
-    ignored: /\.sw.$/,
   },
   devServer: {
     inline: true,
@@ -210,6 +181,7 @@ const config = {
 if (process.env.DEV_SERVER_HOST) {
   config.devServer.host = process.env.DEV_SERVER_HOST;
 }
+//config.devServer.host = '192.168.5.241'
 
 if (process.env.NODE_ENV === 'production') {
   config.output.filename = '[name].[chunkhash].js';
@@ -220,10 +192,6 @@ if (process.env.NODE_ENV === 'production') {
     }
   }));
   config.devtool = 'source-map';
-}
-
-if (process.env.BUNDLE_ANALYZER) {
-  config.plugins.push(new BundleAnalyzerPlugin());
 }
 
 module.exports = config;

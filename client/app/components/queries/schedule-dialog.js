@@ -1,6 +1,5 @@
 import moment from 'moment';
 import { map, range, partial } from 'underscore';
-import { durationHumanize } from '@/filters';
 
 import template from './schedule-dialog.html';
 
@@ -58,7 +57,7 @@ function queryTimePicker() {
   };
 }
 
-function queryRefreshSelect(clientConfig) {
+function queryRefreshSelect() {
   return {
     restrict: 'E',
     scope: {
@@ -74,8 +73,43 @@ function queryRefreshSelect(clientConfig) {
                 <option value="">No Refresh</option>
                 </select>`,
     link($scope) {
-      $scope.refreshOptions =
-        clientConfig.queryRefreshIntervals.map(interval => ({ value: String(interval), name: `Every ${durationHumanize(interval)}` }));
+      $scope.refreshOptions = [
+        {
+          value: '60',
+          name: 'Every minute',
+        },
+      ];
+
+      [5, 10, 15, 30].forEach((i) => {
+        $scope.refreshOptions.push({
+          value: String(i * 60),
+          name: `Every ${i} minutes`,
+        });
+      });
+
+      range(1, 13).forEach((i) => {
+        $scope.refreshOptions.push({
+          value: String(i * 3600),
+          name: `Every ${i}h`,
+        });
+      });
+
+      $scope.refreshOptions.push({
+        value: String(24 * 3600),
+        name: 'Every 24h',
+      });
+      $scope.refreshOptions.push({
+        value: String(7 * 24 * 3600),
+        name: 'Every 7 days',
+      });
+      $scope.refreshOptions.push({
+        value: String(14 * 24 * 3600),
+        name: 'Every 14 days',
+      });
+      $scope.refreshOptions.push({
+        value: String(30 * 24 * 3600),
+        name: 'Every 30 days',
+      });
 
       $scope.$watch('refreshType', () => {
         if ($scope.refreshType === 'periodic') {

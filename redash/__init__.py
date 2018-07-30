@@ -19,7 +19,7 @@ from redash.query_runner import import_query_runners
 from redash.destinations import import_destinations
 
 
-__version__ = '4.0.0-rc.1'
+__version__ = '4.0.0'
 
 
 def setup_logging():
@@ -91,7 +91,7 @@ class SlugConverter(BaseConverter):
 
 
 def create_app(load_admin=True):
-    from redash import extensions, handlers
+    from redash import handlers
     from redash.handlers.webpack import configure_webpack
     from redash.admin import init_admin
     from redash.models import db
@@ -137,5 +137,5 @@ def create_app(load_admin=True):
     limiter.init_app(app)
     handlers.init_app(app)
     configure_webpack(app)
-    extensions.init_extensions(app)
+
     return app

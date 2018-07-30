@@ -172,14 +172,6 @@ function QueryViewCtrl(
     });
   };
 
-  $scope.duplicateQuery = () => {
-    Events.record('fork', 'query', $scope.query.id);
-
-    Query.fork({ id: $scope.query.id }, (newQuery) => {
-      $location.url(newQuery.getSourceLink()).replace();
-    });
-  };
-
   $scope.saveQuery = (customOptions, data) => {
     let request = data;
 

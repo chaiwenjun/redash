@@ -11,14 +11,18 @@
 
 @redash-radius: 3px;
 
+
+
+
 // General
 body {
+  //width: 100%!important;
   padding-top: 0;
-  background: #cad1dc2b;
+  background: #ecedef;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif !important;
 
   &.headless {
-    padding-top: 10px;
+    //padding-top: 10px;
     padding-bottom: 15px;
 
     .navbar {
@@ -35,19 +39,8 @@ body {
   clear: both;
 }
 
-.callout {
-  padding: 20px;
-  border: 1px solid #eee;
-  border-left-width: 5px;
-  border-radius: 3px;
-}
-
-.callout-warning {
-  border-left-color: #aa6708;
-}
-
-.callout-info {
-  border-left-color: #1b809e;
+@media screen and (max-width:768px){
+  nav.navbar[role=navigation]{display:none!important;}
 }
 
 // Fixed width layout for specific pages
@@ -428,7 +421,7 @@ page-header, .page-header--new {
   }
 
   .t-header.widget {
-    padding: 15px;
+    padding: 15px 15px 5px 15px;
   }
 
   &:hover {
@@ -735,6 +728,20 @@ text.slicetext {
 }
 
 
+.mainCls{
+  background-color: #ecedef;
+}
+//.selectArea{
+//  padding-left: 1.3rem;
+//}
+.ui-select-container.ui-select-bootstrap.dropdown.ng-pristine.ng-untouched.ng-valid.ng-not-empty {
+  //padding-left: 1.3rem;
+  padding-right: 1.3rem;
+}
+.selectBoxCls{
+  padding-left: 1.3rem !important;
+}
+
 
 // Cross-browser fixes
 
@@ -767,4 +774,5 @@ text.slicetext {
     top: 12px;
   }
 }
+
 

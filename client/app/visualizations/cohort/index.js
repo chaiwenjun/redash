@@ -19,8 +19,6 @@ const DEFAULT_OPTIONS = {
   stageColumn: 'day_number',
   totalColumn: 'total',
   valueColumn: 'value',
-
-  defaultRows: -1,
 };
 
 function groupData(sortedData) {
@@ -223,13 +221,16 @@ export default function init(ngModule) {
 
   ngModule.config((VisualizationProvider) => {
     const editTemplate = '<cohort-editor></cohort-editor>';
+    const defaultOptions = {
+      timeInterval: 'daily',
+    };
 
     VisualizationProvider.registerVisualization({
       type: 'COHORT',
       name: 'Cohort',
       renderTemplate: '<cohort-renderer options="visualization.options" query-result="queryResult"></cohort-renderer>',
       editorTemplate: editTemplate,
-      defaultOptions: DEFAULT_OPTIONS,
+      defaultOptions,
     });
   });
 }

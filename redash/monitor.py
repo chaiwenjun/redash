@@ -4,8 +4,7 @@ from redash import redis_connection, models, __version__, settings
 def get_status():
     status = {}
     info = redis_connection.info()
-    status['redis_used_memory'] = info['used_memory']
-    status['redis_used_memory_human'] = info['used_memory_human']
+    status['redis_used_memory'] = info['used_memory_human']
     status['version'] = __version__
     status['queries_count'] = models.db.session.query(models.Query).count()
     if settings.FEATURE_SHOW_QUERY_RESULTS_COUNT:
@@ -30,10 +29,5 @@ def get_status():
             'data_sources': ', '.join(sources),
             'size': redis_connection.llen(queue)
         }
-    
-    status['manager']['queues']['celery'] = {
-        'size': redis_connection.llen('celery'),
-        'data_sources': ''
-    }
 
     return status

@@ -27,7 +27,7 @@ six==1.10.0
 SQLAlchemy==1.1.4
 SQLAlchemy-Searchable==0.10.6
 SQLAlchemy-Utils>=0.29.0
-sqlparse==0.2.4
+sqlparse==0.1.8
 wsgiref==0.1.2
 honcho==0.5.0
 statsd==2.1.2
@@ -45,9 +45,6 @@ pystache==0.5.4
 parsedatetime==2.1
 cryptography==2.0.2
 simplejson==3.10.0
-ua-parser==0.7.3 
-user-agents==1.1.0
-python-geoip-geolite2==2015.303
 # Uncomment the requirement for ldap3 if using ldap.
 # It is not included by default because of the GPL license conflict.
 # ldap3==2.2.4

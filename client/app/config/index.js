@@ -17,6 +17,7 @@ import 'angular-moment';
 import 'brace';
 import 'angular-ui-ace';
 import 'angular-resizable';
+import ngGridster from 'angular-gridster';
 import { each, isFunction } from 'underscore';
 
 import '@/lib/sortable';
@@ -51,6 +52,7 @@ const requirements = [
   'angularResizable',
   vsRepeat,
   'ui.sortable',
+  ngGridster.name,
 ];
 
 const ngModule = angular.module('app', requirements);

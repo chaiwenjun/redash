@@ -22,10 +22,6 @@ server() {
   exec /usr/local/bin/gunicorn -b 0.0.0.0:5000 --name redash -w${REDASH_WEB_WORKERS:-4} redash.wsgi:app
 }
 
-create_db() {
-  exec /app/manage.py database create_tables
-}
-
 help() {
   echo "Redash Docker."
   echo ""
@@ -68,14 +64,13 @@ case "$1" in
     scheduler
     ;;
   dev_server)
-    export FLASK_DEBUG=1
     exec /app/manage.py runserver --debugger --reload -h 0.0.0.0
     ;;
   shell)
     exec /app/manage.py shell
     ;;
   create_db)
-    create_db
+    exec /app/manage.py database create_tables
     ;;
   manage)
     shift
@@ -93,4 +88,3 @@ case "$1" in
     exec "$@"
     ;;
 esac
-

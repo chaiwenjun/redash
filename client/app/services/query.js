@@ -102,8 +102,6 @@ class Parameters {
       parameters = uniq(collectParams(parts));
     } catch (e) {
       logger('Failed parsing parameters: ', e);
-      // Return current parameters so we don't reset the list
-      parameters = pluck(this.query.options.parameters, 'name');
     }
     return parameters;
   }
@@ -125,13 +123,13 @@ class Parameters {
 
     parameterNames.forEach((param) => {
       if (!has(parametersMap, param)) {
-        this.query.options.parameters.push(new Parameter({
+        this.query.options.parameters.push({
           title: param,
           name: param,
           type: 'text',
           value: null,
           global: false,
-        }));
+        });
       }
     });
 

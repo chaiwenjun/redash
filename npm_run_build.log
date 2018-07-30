@@ -1,0 +1,390 @@
+
+> redash-client@4.0.0 build /home/ccpgdev/redash
+> rm -rf ./client/dist/ && NODE_ENV=production node node_modules/.bin/webpack
+
+Hash: 35862e48196df9a8f9a5
+Version: webpack 3.6.0
+Time: 64392ms
+                                                                       Asset       Size  Chunks                    Chunk Names
+                                                      images/db-logos/pg.png    25.8 kB          [emitted]         
+                  images/_/_/_/_/node_modules/leaflet/dist/images/layers.png  696 bytes          [emitted]         
+             images/_/_/_/_/node_modules/leaflet/dist/images/marker-icon.png    1.47 kB          [emitted]         
+                              fonts/glyphicons-halflings-regular.f4769f9.eot    20.1 kB          [emitted]         
+                             fonts/Material-Design-Iconic-Font.a4d3112.woff2    38.4 kB          [emitted]         
+                              fonts/Material-Design-Iconic-Font.d2a55d3.woff    50.3 kB          [emitted]         
+                               fonts/Material-Design-Iconic-Font.b351bd6.ttf    99.2 kB          [emitted]         
+                            fonts/glyphicons-halflings-regular.448c34a.woff2      18 kB          [emitted]         
+                             fonts/glyphicons-halflings-regular.fa27723.woff    23.4 kB          [emitted]         
+                              fonts/glyphicons-halflings-regular.e18bbf6.ttf    45.4 kB          [emitted]         
+images/_/_/_/_/node_modules/bootstrap/fonts/glyphicons-halflings-regular.svg     109 kB          [emitted]         
+                                       fonts/fontawesome-webfont.674f50d.eot     166 kB          [emitted]         
+                                     fonts/fontawesome-webfont.af7ae50.woff2    77.2 kB          [emitted]         
+                                      fonts/fontawesome-webfont.fee66e7.woff      98 kB          [emitted]         
+                                       fonts/fontawesome-webfont.b06871f.ttf     166 kB          [emitted]         
+      images/_/_/_/_/node_modules/font-awesome/fonts/fontawesome-webfont.svg     444 kB          [emitted]  [big]  
+                                                images/redash_icon_small.png    6.11 kB          [emitted]         
+                                                  images/db-logos/athena.png    12.6 kB          [emitted]         
+                                              images/db-logos/axibasetsd.png    6.38 kB          [emitted]         
+                                                images/db-logos/bigquery.png    20.7 kB          [emitted]         
+                                              images/db-logos/clickhouse.png    2.96 kB          [emitted]         
+                                               images/db-logos/cockroach.png    15.8 kB          [emitted]         
+                                            images/db-logos/dynamodb_sql.png    12.6 kB          [emitted]         
+                                           images/db-logos/elasticsearch.png    16.6 kB          [emitted]         
+                                        images/db-logos/google_analytics.png    14.7 kB          [emitted]         
+                                     images/db-logos/google_spreadsheets.png    13.7 kB          [emitted]         
+                                                images/db-logos/graphite.png    22.1 kB          [emitted]         
+                                                    images/db-logos/hive.png    25.2 kB          [emitted]         
+                                                  images/db-logos/impala.png    14.7 kB          [emitted]         
+                                                images/db-logos/influxdb.png      19 kB          [emitted]         
+                                                 images/db-logos/jirajql.png      12 kB          [emitted]         
+                                                  images/db-logos/kibana.png    9.09 kB          [emitted]         
+                                                    images/db-logos/mapd.png    8.11 kB          [emitted]         
+                                                  images/db-logos/memsql.png    12.4 kB          [emitted]         
+                                                 images/db-logos/mongodb.png      16 kB          [emitted]         
+                                                   images/db-logos/mssql.png    23.7 kB          [emitted]         
+                                                   images/db-logos/mysql.png    12.6 kB          [emitted]         
+                                                  images/db-logos/oracle.png    4.45 kB          [emitted]         
+               images/_/_/_/_/node_modules/leaflet/dist/images/layers-2x.png    1.26 kB          [emitted]         
+                                                  images/db-logos/presto.png    13.8 kB          [emitted]         
+                                                  images/db-logos/python.png    19.6 kB          [emitted]         
+                                                  images/db-logos/qubole.png    2.43 kB          [emitted]         
+                                               images/db-logos/rds_mysql.png    13.8 kB          [emitted]         
+                                                images/db-logos/redshift.png    6.16 kB          [emitted]         
+                                                 images/db-logos/results.png    13.1 kB          [emitted]         
+                                              images/db-logos/salesforce.png    18.6 kB          [emitted]         
+                                                  images/db-logos/sqlite.png    14.1 kB          [emitted]         
+                                            images/db-logos/treasuredata.png      15 kB          [emitted]         
+                                                     images/db-logos/url.png    8.56 kB          [emitted]         
+                                                 images/db-logos/vertica.png    6.51 kB          [emitted]         
+                                               images/destinations/email.png    6.28 kB          [emitted]         
+                                             images/destinations/hipchat.png    11.7 kB          [emitted]         
+                                               images/destinations/slack.png    13.4 kB          [emitted]         
+                                             images/destinations/webhook.png    12.2 kB          [emitted]         
+                                                    images/favicon-16x16.png    1.36 kB          [emitted]         
+                                                    images/favicon-32x32.png       2 kB          [emitted]         
+                                                    images/favicon-96x96.png    3.91 kB          [emitted]         
+                                                     images/google_login.png    18.3 kB          [emitted]         
+                                                             images/logo.png    33.6 kB          [emitted]         
+                                                       images/logo_white.png    34.1 kB          [emitted]         
+          images/_/_/_/_/node_modules/leaflet/dist/images/marker-icon-2x.png    2.59 kB          [emitted]         
+           images/_/_/_/_/node_modules/leaflet/dist/images/marker-shadow.png  618 bytes          [emitted]         
+                                              vendor.1833a5a5a2eb83e559bf.js    2.27 MB       0  [emitted]  [big]  vendor
+                                                 app.e73c6a39d58c3a4e366a.js     345 kB       1  [emitted]  [big]  app
+                                            manifest.460a6c3a40365b3b7e4d.js    1.48 kB       2  [emitted]         manifest
+                                             styles.e73c6a39d58c3a4e366a.css     308 kB       1  [emitted]  [big]  app
+                                          vendor.1833a5a5a2eb83e559bf.js.map    16.2 MB       0  [emitted]         vendor
+                                             app.e73c6a39d58c3a4e366a.js.map    1.43 MB       1  [emitted]         app
+                                         styles.e73c6a39d58c3a4e366a.css.map  108 bytes       1  [emitted]         app
+                                        manifest.460a6c3a40365b3b7e4d.js.map    14.2 kB       2  [emitted]         manifest
+                                                                  index.html  936 bytes          [emitted]         
+                                                              multi_org.html  948 bytes          [emitted]         
+                                                         asset-manifest.json    5.27 kB          [emitted]         
+                                                                  robots.txt   31 bytes          [emitted]         
+                                                            styles/login.css    1.03 kB          [emitted]         
+                                                            js/jquery.min.js    86.7 kB          [emitted]         
+
+WARNING in ./client/app/components/dynamic-table/default-cell/index.js
+
+/home/ccpgdev/redash/client/app/components/dynamic-table/default-cell/index.js
+   2:49  error  There should be no space before ','           comma-spacing
+   2:62  error  A space is required before '}'                object-curly-spacing
+   8:11  error  Missing space before value for key 'openurl'  key-spacing
+  30:53  error  A space is required after ','                 comma-spacing
+
+✖ 4 problems (4 errors, 0 warnings)
+  4 errors, 0 warnings potentially fixable with the `--fix` option.
+
+ @ ./client/app/components ^((?![\\\/]test[\\\/]).)*\.js$
+ @ ./client/app/config/index.js
+ @ ./client/app/index.js
+ @ multi ./client/app/index.js ./client/app/assets/less/main.less
+
+WARNING in ./client/app/components/dynamic-table/default-cell/utils.js
+
+/home/ccpgdev/redash/client/app/components/dynamic-table/default-cell/utils.js
+  63:5   error  Expected exception block, space or tab after '//' in comment     spaced-comment
+  76:9   error  Multiple spaces found before 'function'                          no-multi-spaces
+  76:32  error  A space is required after ','                                    comma-spacing
+  77:1   error  Expected indentation of 2 spaces but found 8                     indent
+  78:1   error  Expected indentation of 2 spaces but found 8                     indent
+  78:9   error  All 'var' declarations must be at the top of the function scope  vars-on-top
+  78:9   error  Unexpected var, use let or const instead                         no-var
+  78:23  error  Infix operators must be spaced                                   space-infix-ops
+  79:1   error  Expected indentation of 2 spaces but found 8                     indent
+
+✖ 9 problems (9 errors, 0 warnings)
+  8 errors, 0 warnings potentially fixable with the `--fix` option.
+
+ @ ./client/app/components ^((?![\\\/]test[\\\/]).)*\.js$
+ @ ./client/app/config/index.js
+ @ ./client/app/index.js
+ @ multi ./client/app/index.js ./client/app/assets/less/main.less
+
+WARNING in ./client/app/visualizations/table/index.js
+
+/home/ccpgdev/redash/client/app/visualizations/table/index.js
+  8:49  error  A space is required after ','  comma-spacing
+
+✖ 1 problem (1 error, 0 warnings)
+  1 error, 0 warnings potentially fixable with the `--fix` option.
+
+ @ ./client/app/visualizations ^((?![\\\/]test[\\\/]).)*\.js$
+ @ ./client/app/config/index.js
+ @ ./client/app/index.js
+ @ multi ./client/app/index.js ./client/app/assets/less/main.less
+
+WARNING in vendor.1833a5a5a2eb83e559bf.js from UglifyJs
+Condition always true [./node_modules/moment/moment.js:8,0]
+Dropping unused variable aliasedRequire [./node_modules/moment/moment.js:1844,0]
+Dropping unused variable delta [./node_modules/moment/moment.js:3242,0]
+Condition always true [./node_modules/underscore/underscore.js:48,0]
+Dropping unreachable code [./node_modules/underscore/underscore.js:54,0]
+Condition always true [./node_modules/underscore/underscore.js:1543,0]
+Condition always true [./node_modules/d3/d3.js:9553,0]
+Dropping unreachable code [./node_modules/d3/d3.js:9553,75]
+Condition always true [./node_modules/jquery/dist/jquery.js:10213,0]
+Condition always true [./node_modules/tinycolor2/tinycolor.js:1187,0]
+Dropping unreachable code [./node_modules/tinycolor2/tinycolor.js:1192,0]
+Condition always true [./node_modules/jquery-ui/ui/version.js:2,0]
+Dropping unreachable code [./node_modules/jquery-ui/ui/version.js:9,0]
+Condition always true [./node_modules/moment/locale/af.js:6,0]
+Condition always true [./node_modules/moment/locale/ar.js:8,0]
+Condition always true [./node_modules/moment/locale/ar-dz.js:6,0]
+Condition always true [./node_modules/moment/locale/ar-kw.js:6,0]
+Condition always true [./node_modules/moment/locale/ar-ly.js:6,0]
+Condition always true [./node_modules/moment/locale/ar-ma.js:7,0]
+Condition always true [./node_modules/moment/locale/ar-sa.js:6,0]
+Condition always true [./node_modules/moment/locale/ar-tn.js:6,0]
+Condition always true [./node_modules/moment/locale/az.js:6,0]
+Condition always true [./node_modules/moment/locale/be.js:8,0]
+Condition always true [./node_modules/moment/locale/bg.js:6,0]
+Condition always true [./node_modules/moment/locale/bm.js:6,0]
+Condition always true [./node_modules/moment/locale/bn.js:6,0]
+Condition always true [./node_modules/moment/locale/bo.js:6,0]
+Condition always true [./node_modules/moment/locale/br.js:6,0]
+Condition always true [./node_modules/moment/locale/bs.js:7,0]
+Condition always true [./node_modules/moment/locale/ca.js:6,0]
+Condition always true [./node_modules/moment/locale/cs.js:6,0]
+Dropping unreachable code [./node_modules/moment/locale/cs.js:31,0]
+Dropping unreachable code [./node_modules/moment/locale/cs.js:40,0]
+Dropping unreachable code [./node_modules/moment/locale/cs.js:49,0]
+Dropping unreachable code [./node_modules/moment/locale/cs.js:58,0]
+Dropping unreachable code [./node_modules/moment/locale/cs.js:67,0]
+Condition always true [./node_modules/moment/locale/cv.js:6,0]
+Condition always true [./node_modules/moment/locale/cy.js:7,0]
+Condition always true [./node_modules/moment/locale/da.js:6,0]
+Condition always true [./node_modules/moment/locale/de.js:8,0]
+Condition always true [./node_modules/moment/locale/de-at.js:9,0]
+Condition always true [./node_modules/moment/locale/de-ch.js:6,0]
+Condition always true [./node_modules/moment/locale/dv.js:6,0]
+Condition always true [./node_modules/moment/locale/el.js:6,0]
+Condition always true [./node_modules/moment/locale/en-au.js:6,0]
+Condition always true [./node_modules/moment/locale/en-ca.js:6,0]
+Condition always true [./node_modules/moment/locale/en-gb.js:6,0]
+Condition always true [./node_modules/moment/locale/en-ie.js:6,0]
+Condition always true [./node_modules/moment/locale/en-nz.js:6,0]
+Condition always true [./node_modules/moment/locale/eo.js:8,0]
+Condition always true [./node_modules/moment/locale/es.js:6,0]
+Condition always true [./node_modules/moment/locale/es-do.js:5,0]
+Condition always true [./node_modules/moment/locale/es-us.js:6,0]
+Condition always true [./node_modules/moment/locale/et.js:7,0]
+Condition always true [./node_modules/moment/locale/eu.js:6,0]
+Condition always true [./node_modules/moment/locale/fa.js:6,0]
+Condition always true [./node_modules/moment/locale/fi.js:6,0]
+Condition always true [./node_modules/moment/locale/fo.js:6,0]
+Condition always true [./node_modules/moment/locale/fr.js:6,0]
+Condition always true [./node_modules/moment/locale/fr-ca.js:6,0]
+Condition always true [./node_modules/moment/locale/fr-ch.js:6,0]
+Condition always true [./node_modules/moment/locale/fy.js:6,0]
+Condition always true [./node_modules/moment/locale/gd.js:6,0]
+Condition always true [./node_modules/moment/locale/gl.js:6,0]
+Condition always true [./node_modules/moment/locale/gom-latn.js:6,0]
+Condition always true [./node_modules/moment/locale/gu.js:6,0]
+Condition always true [./node_modules/moment/locale/he.js:8,0]
+Condition always true [./node_modules/moment/locale/hi.js:6,0]
+Condition always true [./node_modules/moment/locale/hr.js:6,0]
+Condition always true [./node_modules/moment/locale/hu.js:6,0]
+Condition always true [./node_modules/moment/locale/hy-am.js:6,0]
+Condition always true [./node_modules/moment/locale/id.js:7,0]
+Condition always true [./node_modules/moment/locale/is.js:6,0]
+Condition always true [./node_modules/moment/locale/it.js:7,0]
+Condition always true [./node_modules/moment/locale/ja.js:6,0]
+Condition always true [./node_modules/moment/locale/jv.js:7,0]
+Condition always true [./node_modules/moment/locale/ka.js:6,0]
+Condition always true [./node_modules/moment/locale/kk.js:6,0]
+Condition always true [./node_modules/moment/locale/km.js:6,0]
+Condition always true [./node_modules/moment/locale/kn.js:6,0]
+Condition always true [./node_modules/moment/locale/ko.js:7,0]
+Condition always true [./node_modules/moment/locale/ky.js:6,0]
+Condition always true [./node_modules/moment/locale/lb.js:7,0]
+Condition always true [./node_modules/moment/locale/lo.js:6,0]
+Condition always true [./node_modules/moment/locale/lt.js:6,0]
+Condition always true [./node_modules/moment/locale/lv.js:7,0]
+Condition always true [./node_modules/moment/locale/me.js:6,0]
+Condition always true [./node_modules/moment/locale/mi.js:6,0]
+Condition always true [./node_modules/moment/locale/mk.js:6,0]
+Condition always true [./node_modules/moment/locale/ml.js:6,0]
+Condition always true [./node_modules/moment/locale/mr.js:7,0]
+Condition always true [./node_modules/moment/locale/ms.js:6,0]
+Condition always true [./node_modules/moment/locale/ms-my.js:7,0]
+Condition always true [./node_modules/moment/locale/my.js:8,0]
+Condition always true [./node_modules/moment/locale/nb.js:7,0]
+Condition always true [./node_modules/moment/locale/ne.js:6,0]
+Condition always true [./node_modules/moment/locale/nl.js:7,0]
+Condition always true [./node_modules/moment/locale/nl-be.js:7,0]
+Condition always true [./node_modules/moment/locale/nn.js:6,0]
+Condition always true [./node_modules/moment/locale/pa-in.js:6,0]
+Condition always true [./node_modules/moment/locale/pl.js:6,0]
+Condition always true [./node_modules/moment/locale/pt.js:6,0]
+Condition always true [./node_modules/moment/locale/pt-br.js:6,0]
+Condition always true [./node_modules/moment/locale/ro.js:7,0]
+Condition always true [./node_modules/moment/locale/ru.js:8,0]
+Condition always true [./node_modules/moment/locale/sd.js:6,0]
+Condition always true [./node_modules/moment/locale/se.js:6,0]
+Condition always true [./node_modules/moment/locale/si.js:6,0]
+Condition always true [./node_modules/moment/locale/sk.js:7,0]
+Dropping unreachable code [./node_modules/moment/locale/sk.js:32,0]
+Dropping unreachable code [./node_modules/moment/locale/sk.js:41,0]
+Dropping unreachable code [./node_modules/moment/locale/sk.js:50,0]
+Dropping unreachable code [./node_modules/moment/locale/sk.js:59,0]
+Dropping unreachable code [./node_modules/moment/locale/sk.js:68,0]
+Condition always true [./node_modules/moment/locale/sl.js:6,0]
+Condition always true [./node_modules/moment/locale/sq.js:8,0]
+Condition always true [./node_modules/moment/locale/sr.js:6,0]
+Condition always true [./node_modules/moment/locale/sr-cyrl.js:6,0]
+Condition always true [./node_modules/moment/locale/ss.js:6,0]
+Condition always true [./node_modules/moment/locale/sv.js:6,0]
+Condition always true [./node_modules/moment/locale/sw.js:6,0]
+Condition always true [./node_modules/moment/locale/ta.js:6,0]
+Condition always true [./node_modules/moment/locale/te.js:6,0]
+Condition always true [./node_modules/moment/locale/tet.js:7,0]
+Condition always true [./node_modules/moment/locale/th.js:6,0]
+Condition always true [./node_modules/moment/locale/tl-ph.js:6,0]
+Condition always true [./node_modules/moment/locale/tlh.js:6,0]
+Condition always true [./node_modules/moment/locale/tr.js:7,0]
+Condition always true [./node_modules/moment/locale/tzl.js:7,0]
+Condition always true [./node_modules/moment/locale/tzm.js:6,0]
+Condition always true [./node_modules/moment/locale/tzm-latn.js:6,0]
+Condition always true [./node_modules/moment/locale/uk.js:7,0]
+Condition always true [./node_modules/moment/locale/ur.js:7,0]
+Condition always true [./node_modules/moment/locale/uz.js:6,0]
+Condition always true [./node_modules/moment/locale/uz-latn.js:6,0]
+Condition always true [./node_modules/moment/locale/vi.js:6,0]
+Condition always true [./node_modules/moment/locale/x-pseudo.js:6,0]
+Condition always true [./node_modules/moment/locale/yo.js:6,0]
+Condition always true [./node_modules/moment/locale/zh-cn.js:7,0]
+Condition always true [./node_modules/moment/locale/zh-hk.js:8,0]
+Condition always true [./node_modules/moment/locale/zh-tw.js:7,0]
+Condition left of && always false [./node_modules/brace/index.js:45,0]
+Condition always false [./node_modules/brace/index.js:45,0]
+Dropping unreachable code [./node_modules/brace/index.js:46,0]
+Dropping unused function toPrimitive [./node_modules/brace/index.js:916,0]
+Side effects in initialization of unused variable dom [./node_modules/brace/index.js:2385,0]
+Side effects in initialization of unused variable event [./node_modules/brace/index.js:2386,0]
+Side effects in initialization of unused variable useragent [./node_modules/brace/index.js:2387,0]
+Side effects in initialization of unused variable oop [./node_modules/brace/index.js:2644,0]
+Side effects in initialization of unused variable old [./node_modules/brace/index.js:3434,0]
+Side effects in initialization of unused variable oop [./node_modules/brace/index.js:3605,0]
+Non-strict equality against boolean: != true [./node_modules/brace/index.js:4092,0]
+Non-strict equality against boolean: != true [./node_modules/brace/index.js:4092,0]
+Dropping unreachable code [./node_modules/brace/index.js:6169,0]
+Side effects in initialization of unused variable sel [./node_modules/brace/index.js:6214,0]
+Dropping unused function validateDelta [./node_modules/brace/index.js:6403,0]
+Side effects in initialization of unused variable oop [./node_modules/brace/index.js:7084,0]
+Side effects in initialization of unused variable afterEnd [./node_modules/brace/index.js:7623,0]
+Side effects in initialization of unused variable consumedFolds [./node_modules/brace/index.js:7628,0]
+Side effects in initialization of unused variable Range [./node_modules/brace/index.js:7560,0]
+Non-strict equality against boolean: != false [./node_modules/brace/index.js:10361,0]
+Non-strict equality against boolean: == true [./node_modules/brace/index.js:10573,0]
+Non-strict equality against boolean: != false [./node_modules/brace/index.js:10574,0]
+Non-strict equality against boolean: == false [./node_modules/brace/index.js:10598,0]
+Non-strict equality against boolean: == false [./node_modules/brace/index.js:10615,0]
+Dropping unused function last [./node_modules/brace/index.js:11725,0]
+Side effects in initialization of unused variable end [./node_modules/brace/index.js:12394,0]
+Non-strict equality against boolean: != false [./node_modules/brace/index.js:14469,0]
+Side effects in initialization of unused variable useragent [./node_modules/brace/index.js:14058,0]
+Non-strict equality against boolean: == true [./node_modules/brace/index.js:17781,0]
+Side effects in initialization of unused variable oop [./node_modules/brace/index.js:18453,0]
+Side effects in initialization of unused variable Range [./node_modules/brace/index.js:18455,0]
+Condition always true [./node_modules/brace/index.js:19011,0]
+Condition always true [./node_modules/jquery-ui/ui/ie.js:2,0]
+Dropping unreachable code [./node_modules/jquery-ui/ui/ie.js:9,0]
+Condition always true [./node_modules/jquery-ui/ui/widget.js:17,0]
+Dropping unreachable code [./node_modules/jquery-ui/ui/widget.js:24,0]
+Condition always true [./node_modules/sprintf-js/src/sprintf.js:200,0]
+Condition always true [./node_modules/sprintf-js/src/sprintf.js:208,0]
+Condition always true [./node_modules/pace-progress/pace.js:937,0]
+Dropping unreachable code [./node_modules/pace-progress/pace.js:941,3]
+Dropping unused function includes [./node_modules/angular/angular.js:810,0]
+Dropping unused function nodesetLinkingFn [./node_modules/angular/angular.js:10387,0]
+Dropping unused function directiveLinkingFn [./node_modules/angular/angular.js:10394,0]
+Dropping unused function getSlideByIndex [./node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js:606,0]
+Dropping unused variable lastActivated [./node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js:1348,0]
+Dropping unused variable dataPerTracked [./node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js:1340,0]
+Dropping unused function cameltoDash [./node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js:3030,0]
+Dropping unused variable cache [./node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js:2759,0]
+Dropping unused variable selectedOption [./node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js:3425,0]
+Dropping unreachable code [./node_modules/ui-select/dist/select.js:1753,0]
+Dropping unreachable code [./node_modules/ui-select/dist/select.js:1762,0]
+Dropping unreachable code [./node_modules/ui-select/dist/select.js:1776,0]
+Dropping side-effect-free statement [./node_modules/angular-moment/angular-moment.js:3,0]
+Condition always true [./node_modules/angular-moment/angular-moment.js:24,0]
+Dropping unreachable code [./node_modules/angular-moment/angular-moment.js:27,0]
+Condition always true [./node_modules/angular-moment/angular-moment.js:730,0]
+Dropping unreachable code [./node_modules/angular-moment/angular-moment.js:732,2]
+Side effects in initialization of unused variable isElectron [./node_modules/angular-moment/angular-moment.js:729,0]
+Condition always true [./node_modules/angular-gridster/dist/angular-gridster.min.js:8,28]
+Condition always true [./node_modules/jquery-ui/ui/widgets/sortable.js:18,0]
+Dropping unreachable code [./node_modules/jquery-ui/ui/widgets/sortable.js:33,0]
+Condition always true [./node_modules/jquery-ui/ui/widgets/mouse.js:16,0]
+Dropping unreachable code [./node_modules/jquery-ui/ui/widgets/mouse.js:28,0]
+Condition always true [./node_modules/jquery-ui/ui/data.js:16,0]
+Dropping unreachable code [./node_modules/jquery-ui/ui/data.js:23,0]
+Condition always true [./node_modules/jquery-ui/ui/scroll-parent.js:16,0]
+Dropping unreachable code [./node_modules/jquery-ui/ui/scroll-parent.js:23,0]
+Side effects in initialization of unused variable check [./node_modules/markdown/lib/markdown.js:1044,0]
+Dropping unused variable lines [./node_modules/markdown/lib/markdown.js:350,0]
+Dropping unused variable number_list [./node_modules/markdown/lib/markdown.js:427,0]
+Side effects in initialization of unused variable old_tree [./node_modules/markdown/lib/markdown.js:705,0]
+Dropping unused variable lastIndex [./node_modules/markdown/lib/markdown.js:775,0]
+Condition always false [./node_modules/markdown/lib/markdown.js:1718,0]
+Dropping unreachable code [./node_modules/markdown/lib/markdown.js:1720,0]
+Dropping unused variable changeRange [./node_modules/brace/ext/language_tools.js:633,0]
+Side effects in initialization of unused variable line [./node_modules/brace/ext/language_tools.js:1492,0]
+Side effects in initialization of unused variable line [./node_modules/brace/ext/language_tools.js:1479,0]
+Side effects in initialization of unused variable event [./node_modules/brace/ext/language_tools.js:1288,0]
+Condition always true [./node_modules/mousetrap/mousetrap.js:1039,0]
+Condition always true [./node_modules/mustache/mustache.js:11,3]
+Dropping unreachable code [./node_modules/mustache/mustache.js:14,0]
+Condition always true [./node_modules/es6-promise/dist/es6-promise.js:10,0]
+Dropping unused variable r [./node_modules/es6-promise/dist/es6-promise.js:132,0]
+Dropping side-effect-free && in boolean context [./node_modules/es6-promise/dist/es6-promise.js:149,1]
+Dropping side-effect-free || in boolean context [./node_modules/plotly.js/src/traces/pie/plot.js:495,0]
+Condition always true [./node_modules/numeral/numeral.js:10,0]
+Dropping unreachable code [./node_modules/numeral/numeral.js:12,5]
+Dropping unused variable min [./node_modules/numeral/numeral.js:118,0]
+Dropping unused variable max [./node_modules/numeral/numeral.js:119,0]
+Dropping unused variable power [./node_modules/numeral/numeral.js:120,0]
+Dropping unused variable i [./node_modules/numeral/numeral.js:274,0]
+Condition always true [./node_modules/leaflet/dist/leaflet-src.js:6,0]
+Condition always true [./node_modules/pivottable/dist/pivot.js:9,0]
+Dropping unreachable code [./node_modules/pivottable/dist/pivot.js:11,5]
+Side effects in initialization of unused variable perimeter [./node_modules/d3-cloud/index.js:102,0]
+
+WARNING in app.e73c6a39d58c3a4e366a.js from UglifyJs
+Side effects in initialization of unused variable logger [./client/app/directives/utils.js:3,13]
+Side effects in initialization of unused variable requestAnimationFrame [./client/app/directives/utils.js:5,13]
+Side effects in initialization of unused variable ErrorHandler [./client/app/components/app-view/error-handler.js:4,13]
+Side effects in initialization of unused variable SCHEMA_NOT_SUPPORTED [./client/app/services/data-source.js:1,13]
+Side effects in initialization of unused variable SCHEMA_LOAD_ERROR [./client/app/services/data-source.js:2,13]
+Side effects in initialization of unused variable ColorPalette [./client/app/visualizations/chart/plotly/utils.js:27,13]
+Dropping unused function moveSourcesRight [./client/app/lib/visualizations/d3sankey.js:90,11]
+Condition always true [./client/app/pages/dashboards/dashboard.js:31,25]
+Child html-webpack-plugin for "multi_org.html":
+     1 asset
+Child html-webpack-plugin for "index.html":
+     1 asset
+Child extract-text-webpack-plugin node_modules/extract-text-webpack-plugin/dist node_modules/css-loader/index.js??ref--2-1!node_modules/leaflet/dist/leaflet.css:
+     3 assets
+Child extract-text-webpack-plugin node_modules/extract-text-webpack-plugin/dist node_modules/css-loader/index.js??ref--3-1!node_modules/less-loader/dist/cjs.js??ref--3-2!client/app/assets/less/main.less:
+     13 assets

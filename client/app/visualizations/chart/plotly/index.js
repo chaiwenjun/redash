@@ -78,7 +78,7 @@ const PlotlyChart = () => ({
       }
     }, true);
 
-    scope.handleResize = debounce(updateChartDimensions, 50);
+    scope.handleResize = debounce(updateChartDimensions, 100);
   },
 });
 

@@ -1,4 +1,5 @@
 import * as _ from 'underscore';
+import { requestAnimationFrame } from './utils';
 
 const items = new Map();
 
@@ -17,7 +18,7 @@ function checkItems() {
     }
   });
 
-  setTimeout(checkItems, 50);
+  requestAnimationFrame(checkItems);
 }
 
 checkItems(); // ensure it was called only once!

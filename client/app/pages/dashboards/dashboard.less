@@ -1,16 +1,9 @@
 .dashboard-wrapper {
   .tile {
     display: flex;
-    position: absolute;
-    left: 0;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    width: auto;
+    position: static;
     height: auto;
-    overflow: hidden;
-    margin: 0;
-    padding: 0;
+    margin-bottom: 15px;
   }
 
   pivot-table-renderer > table, grid-renderer > div, visualization-renderer > div {
@@ -35,30 +28,22 @@
     }
   }
 
-  .dashboard-widget-wrapper:not(.widget-auto-height-enabled) {
-    visualization-renderer {
-      display: flex;
-      flex-direction: column;
-      position: absolute;
-      left: 0;
-      top: 0;
-      right: 0;
-      bottom: 0;
+  .gridster-preview-holder {
+    background: #aaa;
+  }
 
-      > filters {
-        flex-grow: 0;
-      }
+  &.gridster-mobile {
+    margin: 0;
 
-      > div {
-        flex-grow: 1;
-        position: relative;
-      }
+    .gridster-item {
+      margin-top: 8px!important;
+      margin-left: 0 !important;
+      margin-right: 0 !important;
     }
+  }
 
-    .sunburst-visualization-container,
-    .sankey-visualization-container,
-    .map-visualization-container,
-    .plotly-chart-container {
+  &:not(.gridster-mobile) {
+    .tile {
       position: absolute;
       left: 0;
       top: 0;
@@ -67,27 +52,60 @@
       width: auto;
       height: auto;
       overflow: hidden;
+      margin: 0;
+      padding: 0;
     }
 
-    counter {
-      position: absolute;
-      left: 10px;
-      top: 15px;
-      right: 10px;
-      bottom: 15px;
-      height: auto;
-      overflow: hidden;
-      padding: 0;
+    .gridster-item:not(.gridster-auto-height-enabled) {
+      visualization-renderer {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+
+        > filters {
+          flex-grow: 0;
+        }
+
+        > div {
+          flex-grow: 1;
+          position: relative;
+        }
+      }
+
+      .sunburst-visualization-container,
+      .sankey-visualization-container,
+      .map-visualization-container,
+      .plotly-chart-container {
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        width: auto;
+        height: auto;
+        overflow: hidden;
+      }
+
+      counter {
+        position: absolute;
+        left: 10px;
+        top: 15px;
+        right: 10px;
+        bottom: 15px;
+        height: auto;
+        overflow: hidden;
+        padding: 0;
+      }
     }
   }
 
-  .widget-auto-height-enabled {
+  .gridster-auto-height-enabled {
     .spinner {
       position: static;
-    }
-
-    .scrollbox {
-      overflow-y: hidden;
     }
   }
 }

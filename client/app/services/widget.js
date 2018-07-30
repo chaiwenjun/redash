@@ -1,9 +1,9 @@
 import { truncate } from 'underscore.string';
-import { pick, flatten, extend, isObject } from 'underscore';
+import { pick, omit, flatten, extend, isObject } from 'underscore';
 
 function Widget($resource, $http, Query, Visualization, dashboardGridOptions) {
   function prepareForSave(data) {
-    return pick(data, 'options', 'text', 'id', 'width', 'dashboard_id', 'visualization_id');
+    return omit(data, 'query');
   }
 
   const WidgetResource = $resource('api/widgets/:id', { id: '@id' }, {
@@ -103,19 +103,10 @@ function Widget($resource, $http, Query, Visualization, dashboardGridOptions) {
     widget.options.position = extend(
       {},
       visualizationOptions,
-      pick(widget.options.position, ['col', 'row', 'sizeX', 'sizeY', 'autoHeight']),
+      pick(widget.options.position, ['col', 'row', 'sizeX', 'sizeY']),
     );
 
-    if (widget.options.position.sizeY < 0) {
-      widget.options.position.autoHeight = true;
-    }
-
-    const result = new WidgetResource(widget);
-
-    // Save original position (create a shallow copy)
-    result.$originalPosition = extend({}, result.options.position);
-
-    return result;
+    return new WidgetResource(widget);
   }
 
   return WidgetConstructor;

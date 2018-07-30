@@ -1,5 +1,5 @@
 <div class="widget-wrapper">
-  <div class="tile body-container widget-visualization" ng-if="$ctrl.type=='visualization'" ng-class="$ctrl.type"
+  <div class="tile body-container" ng-if="$ctrl.type=='visualization'" ng-class="$ctrl.type"
     ng-switch="$ctrl.queryResult.getStatus()">
     <div class="body-row">
       <div class="t-header widget clearfix">
@@ -8,6 +8,7 @@
             <a ng-click="$ctrl.deleteWidget()" title="Remove From Dashboard"><i class="zmdi zmdi-close"></i></a>
           </div>
         </div>
+
         <div class="dropdown pull-right widget-menu-regular" ng-if="!$ctrl.public" uib-dropdown>
           <div class="actions">
             <a data-toggle="dropdown" uib-dropdown-toggle><i class="zmdi zmdi-more"></i></a>
@@ -21,9 +22,10 @@
           </ul>
         </div>
         <div class="th-title">
-          <p class="hidden-print">
+          <p class="hidden-print clearfix">
             <span ng-hide="$ctrl.canViewQuery">{{$ctrl.query.name}}</span>
-            <query-link query="$ctrl.query" visualization="$ctrl.widget.visualization" ng-show="$ctrl.canViewQuery"></query-link>
+<a href="javascript:history.back(-1)" class="pull-right" style="font-size:13px;margin-top:3px;">返回</a>
+           <!--<query-link query="$ctrl.query" visualization="$ctrl.widget.visualization" ng-show="$ctrl.canViewQuery"></query-link>-->
             <small><visualization-name visualization="$ctrl.widget.visualization"/></small>
           </p>
           <p class="visible-print">
@@ -37,11 +39,10 @@
         <parameters parameters="$ctrl.localParametersDefs()"></parameters>
       </div>
     </div>
-
-    <div ng-switch-when="failed" class="body-row-auto scrollbox">
+ <div ng-switch-when="failed" class="body-row-auto scrollbox">
       <div class="alert alert-danger m-5" ng-show="$ctrl.queryResult.getError()">Error running query: <strong>{{$ctrl.queryResult.getError()}}</strong></div>
     </div>
-    <div ng-switch-when="done" class="body-row-auto scrollbox">
+    <div ng-switch-when="done" class="body-row-auto scrollbox" ng-style="$ctrl.getWidgetStyles()">
       <visualization-renderer visualization="$ctrl.widget.visualization" query-result="$ctrl.queryResult" class="t-body"></visualization-renderer>
     </div>
     <div ng-switch-default class="body-row-auto spinner-container">
@@ -51,7 +52,7 @@
     </div>
 
     <div class="body-row clearfix tile__bottom-control">
-      <a class="small hidden-print" ng-click="$ctrl.reload(true)" ng-if="!$ctrl.public">
+     <!-- <a class="small hidden-print" ng-click="$ctrl.reload(true)" ng-if="!$ctrl.public">
         <i class="zmdi zmdi-time-restore"></i> <span am-time-ago="$ctrl.queryResult.getUpdatedAt()"></span>
       </a>
       <span class="small hidden-print" ng-if="$ctrl.public">
@@ -59,24 +60,34 @@
       </span>
       <span class="visible-print">
         <i class="zmdi zmdi-time-restore"></i> {{$ctrl.queryResult.getUpdatedAt() | dateTime}}
-      </span>
-
+      </span>-->
+      <span>*蓝色组织可点击查看明细，点击合计返回上一层级</span><script>
+window.onload=function(){
+   var arrAreaName=document.querySelectorAll('table div[ng-if=allowHTML] a[title="点击进入相应层级，点击合计进入上一层级"]');      
+ for(var i=0,len=arrAreaName.length;i<len;i++{
+   if(arrAreaName[i].innerText.toString().indexOf("大区合计")>=0){                
+         arrAreaName[i].style.color="#999";
+    }
+ }
+}
+</script> 
       <button class="btn btn-sm btn-default pull-right hidden-print btn-transparent btn__refresh" ng-click="$ctrl.reload(true)" ng-if="!$ctrl.public"><i class="zmdi zmdi-refresh"></i></button>
     </div>
   </div>
 
-  <div class="tile body-container widget-restricted" ng-if="$ctrl.type=='restricted'" ng-class="$ctrl.type">
+  <div class="tile body-container" ng-if="$ctrl.type=='restricted'" ng-class="$ctrl.type">
     <div class="t-body body-row-auto scrollbox">
       <div class="text-center">
         <h1><span class="zmdi zmdi-lock"></span></h1>
         <p class="text-muted">
-          This widget requires access to a data source you don't have access to.
+         <!-- This widget requires access to a data source you don't have access to.-->
+	图表无数据源，请联系管理员！
         </p>
       </div>
     </div>
   </div>
 
-  <div class="tile body-container widget-text" ng-hide="$ctrl.widget.width === 0" ng-if="$ctrl.type=='textbox'" ng-class="$ctrl.type">
+  <div class="tile body-container" ng-hide="$ctrl.widget.width === 0" ng-if="$ctrl.type=='textbox'" ng-class="$ctrl.type">
     <div class="body-row clearfix t-body">
       <div class="dropdown pull-right widget-menu-remove" ng-if="!$ctrl.public && $ctrl.dashboard.canEdit()">
         <div class="dropdown-header">

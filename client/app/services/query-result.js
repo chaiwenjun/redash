@@ -31,7 +31,8 @@ function getColumnNameWithoutType(column) {
 }
 
 export function getColumnCleanName(column) {
-  return getColumnNameWithoutType(column);
+  const name = getColumnNameWithoutType(column);
+  return name;
 }
 
 function getColumnFriendlyName(column) {
@@ -119,7 +120,6 @@ function QueryResultService($resource, $timeout, $q) {
         });
 
         each(this.query_result.data.columns, (column) => {
-          column.name = '' + column.name;
           if (columnTypes[column.name]) {
             if (column.type == null || column.type === 'string') {
               column.type = columnTypes[column.name];
@@ -183,7 +183,9 @@ function QueryResultService($resource, $timeout, $q) {
         return null;
       }
 
-      return this.query_result.data.rows;
+      const data = this.query_result.data.rows;
+
+      return data;
     }
 
     getData() {
@@ -260,11 +262,12 @@ function QueryResultService($resource, $timeout, $q) {
         let sizeValue = null;
 
         each(row, (v, definition) => {
-          definition = '' + definition;
-          const definitionParts = definition.split('::') || definition.split('__');
-          const name = definitionParts[0];
-          const type = mapping ? mapping[definition] : definitionParts[1];
+          const name = definition.split('::')[0] || definition.split('__')[0];
           let value = v;
+          let type = definition.split('::')[1] || definition.split('__')[1];
+          if (mapping) {
+            type = mapping[definition];
+          }
 
           if (type === 'unused') {
             return;

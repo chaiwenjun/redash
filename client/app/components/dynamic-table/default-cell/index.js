@@ -1,10 +1,11 @@
 import { contains, identity } from 'underscore';
-import { renderDefault, renderImage, renderLink } from './utils';
+import { renderDefault, renderImage, renderLink , openNewPage} from './utils';
 import template from './template.html';
 
 const renderFunctions = {
   image: renderImage,
   link: renderLink,
+  openurl:openNewPage,
 };
 
 export default function init(ngModule) {
@@ -26,7 +27,7 @@ export default function init(ngModule) {
       if ($scope.column.displayAs === 'string') {
         $scope.allowHTML = $scope.column.allowHTML;
       } else {
-        $scope.allowHTML = contains(['image', 'link'], $scope.column.displayAs);
+        $scope.allowHTML = contains(['image', 'link','openurl'], $scope.column.displayAs);
       }
 
       const sanitize = $scope.allowHTML ? $sanitize : identity;

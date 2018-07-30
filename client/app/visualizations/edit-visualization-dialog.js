@@ -19,9 +19,6 @@ const EditVisualizationDialog = {
     this.visualization = copy(this.originalVisualization);
     this.visTypes = Visualization.visualizationTypes;
 
-    // Don't allow to change type after creating visualization
-    this.canChangeType = !(this.visualization && this.visualization.id);
-
     this.newVisualization = () =>
       ({
         type: Visualization.defaultVisualization.type,

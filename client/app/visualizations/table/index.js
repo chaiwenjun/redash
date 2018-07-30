@@ -1,11 +1,11 @@
 import _ from 'underscore';
 import { getColumnCleanName } from '@/services/query-result';
-import { createFormatter } from '@/lib/value-format';
+import createFormatter from '@/lib/value-format';
 import template from './table.html';
 import editorTemplate from './table-editor.html';
 import './table-editor.less';
 
-const ALLOWED_ITEM_PER_PAGE = [5, 10, 15, 20, 25];
+const ALLOWED_ITEM_PER_PAGE = [5, 10, 15, 20, 25,50];
 
 const DISPLAY_AS_OPTIONS = [
   { name: 'Text', value: 'string' },
@@ -19,8 +19,8 @@ const DISPLAY_AS_OPTIONS = [
 
 const DEFAULT_OPTIONS = {
   itemsPerPage: 15,
-  defaultRows: -1,
-  defaultColumns: 3,
+  defaultRows: 14,
+  defaultColumns: 4,
   minColumns: 2,
 };
 
@@ -47,7 +47,7 @@ function getDefaultColumnsOptions(columns) {
     allowSearch: false,
     alignContent: getColumnContentAlignment(col.type),
     // `string` cell options
-    allowHTML: true,
+    allowHTML: false,
     highlightLinks: false,
   }));
 }

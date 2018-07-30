@@ -3,37 +3,37 @@ import {
   each, values, sortBy, pluck, identity, filter, map,
 } from 'underscore';
 import moment from 'moment';
-import { createFormatter } from '@/lib/value-format';
+import createFormatter from '@/lib/value-format';
 
 // The following colors will be used if you pick "Automatic" color.
 const BaseColors = {
-  Blue: '#356AFF',
-  Red: '#E92828',
-  Green: '#3BD973',
-  Purple: '#604FE9',
-  Cyan: '#50F5ED',
-  Orange: '#FB8D3D',
-  'Light Blue': '#799CFF',
-  Lilac: '#B554FF',
-  'Light Green': '#8CFFB4',
-  Brown: '#A55F2A',
+  Blue: '#4572A7',
+  Red: '#AA4643',
+  Green: '#89A54E',
+  Purple: '#80699B',
+  Cyan: '#3D96AE',
+  Orange: '#DB843D',
+  'Light Blue': '#92A8CD',
+  Lilac: '#A47D7C',
+  'Light Green': '#B5CA92',
+  Brown: '#A52A2A',
   Black: '#000000',
-  Gray: '#494949',
-  Pink: '#FF7DE3',
-  'Dark Blue': '#002FB4',
+  Gray: '#808080',
+  Pink: '#FFC0CB',
+  'Dark Blue': '#00008b',
 };
 
 // Additional colors for the user to choose from:
 export const ColorPalette = Object.assign({}, BaseColors, {
-  'Indian Red': '#981717',
-  'Green 2': '#17BF51',
-  'Green 3': '#049235',
+  'Indian Red': '#F8766D',
+  'Green 2': '#53B400',
+  'Green 3': '#00C094',
   DarkTurquoise: '#00B6EB',
   'Dark Violet': '#A58AFF',
-  'Pink 2': '#C63FA9',
+  'Pink 2': '#FB61D7',
 });
 
-const formatNumber = createFormatter({ displayAs: 'number', numberFormat: '0,0[.]00000' });
+const formatNumber = createFormatter({ displayAs: 'number', numberFormat: '0,0[.]00' });
 const formatPercent = createFormatter({ displayAs: 'number', numberFormat: '0[.]00' });
 
 const ColorPaletteArray = values(BaseColors);
@@ -148,10 +148,8 @@ function calculateDimensions(series, options) {
 
   const hasX = contains(values(options.columnMapping), 'x');
   const hasY2 = !!find(series, (serie) => {
-    const seriesOptions = options.seriesOptions[serie.name] || { type: options.globalSeriesType };
-    return (seriesOptions.yAxis === 1) && (
-      (options.series.stacking === null) || (seriesOptions.type === 'line')
-    );
+    const serieOptions = options.seriesOptions[serie.name] || { type: options.globalSeriesType };
+    return (serieOptions.yAxis === 1) && (options.series.stacking === null);
   });
 
   return {
@@ -193,7 +191,7 @@ function preparePieData(seriesList, options) {
       marker: { colors: ColorPaletteArray },
       text: serie.name,
       textposition: 'inside',
-      textfont: { color: '#ffffff' },
+      textfont: { color: '#f5f5f5' },
       name: serie.name,
       domain: {
         x: [xPosition, xPosition + cellWidth - xPadding],
@@ -251,10 +249,7 @@ function prepareChartData(seriesList, options) {
       sourceData,
     };
 
-    if (
-      (seriesOptions.yAxis === 1) &&
-      ((options.series.stacking === null) || (seriesOptions.type === 'line'))
-    ) {
+    if ((seriesOptions.yAxis === 1) && (options.series.stacking === null)) {
       plotlySeries.yaxis = 'y2';
     }
 
@@ -266,7 +261,6 @@ function prepareChartData(seriesList, options) {
       };
     } else if (seriesOptions.type === 'box') {
       plotlySeries.boxpoints = 'outliers';
-      plotlySeries.hoverinfo = false;
       plotlySeries.marker = {
         color: seriesColor,
         size: 3,
@@ -332,10 +326,6 @@ export function prepareLayout(element, seriesList, options, data) {
       type: getScaleType(options.xAxis.type),
     };
 
-    if (options.sortX && result.xaxis.type === 'category') {
-      result.xaxis.categoryorder = 'category ascending';
-    }
-
     if (!isUndefined(options.xAxis.labels)) {
       result.xaxis.showticklabels = options.xAxis.labels.enabled;
     }
@@ -383,18 +373,14 @@ export function prepareLayout(element, seriesList, options, data) {
 function updateSeriesText(seriesList, options) {
   each(seriesList, (series) => {
     series.text = [];
-    series.x.forEach((x) => {
-      let text = null;
-      const item = series.sourceData.get(x);
-      if (item) {
-        text = formatNumber(item.y);
-        if (item.yError !== undefined) {
-          text = `${text} \u00B1 ${formatNumber(item.yError)}`;
-        }
+    series.sourceData.forEach((item) => {
+      let text = formatNumber(item.y);
+      if (item.yError !== undefined) {
+        text = `${text} \u00B1 ${formatNumber(item.yError)}`;
+      }
 
-        if (options.series.percentValues) {
-          text = `${formatPercent(Math.abs(item.yPercent))}% (${text})`;
-        }
+      if (options.series.percentValues) {
+        text = `${formatPercent(Math.abs(item.yPercent))}% (${text})`;
       }
 
       series.text.push(text);

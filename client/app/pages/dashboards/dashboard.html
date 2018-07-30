@@ -1,6 +1,6 @@
-<div class="container">
+<div class="container mainCls">
 
-  <div class="row p-l-15 p-r-15 m-b-10 m-l-0 m-r-0 dashboard-header">
+  <div class="row p-l-15 p-r-15 m-b-10 m-l-0 m-r-0 dashboard-header" ng-if="!$ctrl.isFullscreen">
     <div class="col-xs-5 col-sm-5 col-lg-5 page-header--new p-l-0">
       <h3>
         <edit-in-place editable="$ctrl.layoutEditing" done="$ctrl.saveName" ignore-blanks="true" value="$ctrl.dashboard.name"></edit-in-place>
@@ -69,31 +69,27 @@
     </div>
   </div>
 
-  <div class="m-b-10 p-15 bg-white tiled" ng-if="$ctrl.layoutEditing">
+  <div class="m-b-10 p-15 bg-white tiled" ng-if="$ctrl.layoutEditing && !$ctrl.isFullscreen">
     <label>
         <input name="input" type="checkbox" ng-model="$ctrl.dashboard.dashboard_filters_enabled" ng-change="$ctrl.updateDashboardFiltersState()">
         Use Dashboard Level Filters
     </label>
   </div>
 
-  <div class="m-b-10 p-15 bg-white tiled" ng-if="$ctrl.globalParameters.length > 0">
+  <div class="m-b-10 p-15 bg-white tiled" ng-if="$ctrl.globalParameters.length > 0 && !$ctrl.isFullscreen">
     <parameters parameters="$ctrl.globalParameters" on-change="$ctrl.onGlobalParametersChange()"></parameters>
   </div>
 
-  <div class="m-b-10 p-15 bg-white tiled" ng-if="$ctrl.filters | notEmpty">
+  <div class="m-b-10 p-15 bg-white tiled" ng-if="($ctrl.filters | notEmpty) && !$ctrl.isFullscreen">
     <filters filters="$ctrl.filters" on-change="$ctrl.filtersOnChange(filter, $modal)"></filters>
   </div>
 
-  <div style="padding-bottom: 5px;" ng-if="$ctrl.dashboard.widgets.length > 0">
-    <div gridstack editing="$ctrl.layoutEditing && !$ctrl.saveInProgress" batch-update="$ctrl.updateGridItems"
-      is-one-column-mode="$ctrl.isGridDisabled" class="dashboard-wrapper"
+  <div style="overflow: hidden; padding-bottom: 5px;" ng-if="$ctrl.dashboard.widgets.length > 0">
+    <div gridster="$ctrl.dashboardGridOptions" class="dashboard-wrapper"
       ng-class="{'preview-mode': !$ctrl.layoutEditing, 'editing-mode': $ctrl.layoutEditing}">
-      <div class="dashboard-widget-wrapper"
-        ng-repeat="widget in $ctrl.dashboard.widgets track by widget.id"
-        gridstack-item="widget.options.position" gridstack-item-id="{{ widget.id }}">
-        <div class="grid-stack-item-content">
-          <dashboard-widget widget="widget" dashboard="$ctrl.dashboard" on-delete="$ctrl.removeWidget()"></dashboard-widget>
-        </div>
+      <div ng-repeat="widget in $ctrl.dashboard.widgets" gridster-item="widget.options.position"
+        gridster-auto-height=".scrollbox, .spinner-container">
+        <dashboard-widget widget="widget" dashboard="$ctrl.dashboard" on-delete="$ctrl.removeWidget()"></dashboard-widget>
       </div>
     </div>
   </div>
@@ -106,3 +102,4 @@
     <a class="btn btn-primary" ng-click="$ctrl.addWidget()">Add Widget</a>
   </div>
 </div>
+

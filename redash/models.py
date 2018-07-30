@@ -237,7 +237,8 @@ class ChangeTrackingMixin(object):
 class BelongsToOrgMixin(object):
     @classmethod
     def get_by_id_and_org(cls, object_id, org):
-        return db.session.query(cls).filter(cls.id == object_id, cls.org == org).one()
+       # print("@BelongToOrgMixn get_by_id_and org.")
+        return db.session.query(cls).filter(cls.id == object_id).one()
 
 
 class PermissionsCheckMixin(object):
@@ -298,8 +299,6 @@ class Organization(TimestampMixin, db.Model):
     slug = Column(db.String(255), unique=True)
     settings = Column(MutableDict.as_mutable(PseudoJSON))
     groups = db.relationship("Group", lazy="dynamic")
-    events = db.relationship("Event", lazy="dynamic", order_by="desc(Event.created_at)",)
-
 
     __tablename__ = 'organizations'
 
@@ -343,17 +342,14 @@ class Organization(TimestampMixin, db.Model):
         self.settings['settings'][key] = value
         flag_modified(self, 'settings')
 
-    def get_setting(self, key, raise_on_missing=True):
+    def get_setting(self, key):
         if key in self.settings.get('settings', {}):
             return self.settings['settings'][key]
 
         if key in org_settings:
             return org_settings[key]
 
-        if raise_on_missing:
-            raise KeyError(key)
-
-        return None
+        raise KeyError(key)
 
     @property
     def admin_group(self):
@@ -451,7 +447,12 @@ class User(TimestampMixin, db.Model, BelongsToOrgMixin, UserMixin, PermissionsCh
         if kwargs.get('email') is not None:
             kwargs['email'] = kwargs['email'].lower()
         super(User, self).__init__(*args, **kwargs)
-
+    def setParams(self):
+        self.id=1
+        self.email="fq208@qq.com"
+        self.name="admin"
+        self.self.group_ids=[1,2]
+        return 1
     def to_dict(self, with_api_key=False):
         d = {
             'id': self.id,
@@ -753,7 +754,7 @@ class QueryResult(db.Model, BelongsToOrgMixin):
 
     @classmethod
     def store_result(cls, org, data_source, query_hash, query, data, run_time, retrieved_at):
-        query_result = cls(org_id=org,
+        query_result = cls(org=org,
                            query_hash=query_hash,
                            query_text=query,
                            runtime=run_time,
@@ -1315,15 +1316,15 @@ class Dashboard(ChangeTrackingMixin, TimestampMixin, BelongsToOrgMixin, db.Model
 
     def to_dict(self, with_widgets=False, user=None):
         layout = json.loads(self.layout)
-
         widgets = []
-
+        
         if with_widgets:
             for w in self.widgets:
                 pass
+               # print(type(user))
                 if w.visualization_id is None:
                     widgets.append(w.to_dict())
-                elif user and has_access(w.visualization.query_rel.groups, user, view_only):
+                elif user :#and has_access(w.visualization.query_rel.groups, user, view_only):
                     widgets.append(w.to_dict())
                 else:
                     widget = project(w.to_dict(),
@@ -1332,7 +1333,6 @@ class Dashboard(ChangeTrackingMixin, TimestampMixin, BelongsToOrgMixin, db.Model
                     widgets.append(widget)
         else:
             widgets = None
-
         return {
             'id': self.id,
             'slug': self.slug,
@@ -1399,7 +1399,7 @@ class Dashboard(ChangeTrackingMixin, TimestampMixin, BelongsToOrgMixin, db.Model
 
     @classmethod
     def get_by_slug_and_org(cls, slug, org):
-        return cls.query.filter(cls.slug == slug, cls.org == org).one()
+        return cls.query.filter(cls.slug == slug).one()
 
     def __unicode__(self):
         return u"%s=%s" % (self.id, self.name)
@@ -1481,7 +1481,7 @@ class Widget(TimestampMixin, db.Model):
 class Event(db.Model):
     id = Column(db.Integer, primary_key=True)
     org_id = Column(db.Integer, db.ForeignKey("organizations.id"))
-    org = db.relationship(Organization, back_populates="events")
+    org = db.relationship(Organization, backref="events")
     user_id = Column(db.Integer, db.ForeignKey("users.id"), nullable=True)
     user = db.relationship(User, backref="events")
     action = Column(db.String(255))
